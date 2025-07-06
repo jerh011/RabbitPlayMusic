@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*clases que usare cada rato*/
+.centrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    gap: 1rem;
+}
+
+.main {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    grid-template-rows: 2.9rem 8fr 1fr;
+    grid-template-columns: 9rem 1fr;
+}
+
+/*dashboard*/
+.dashboardheader {
+    grid-row: 1;
+    grid-column: 1;
+    width: 100%;
+    height: 100%;
+    background-color: blueviolet;
+    border-radius: 0 0 0 20px;
+}
+
+.dashboardconteiner{
+    grid-row: 2;
+    grid-column: 1;
+    min-height: 20rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.dashboardconteiner button {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: start;
+    font-size-adjust: inherit;
+    color: white;
+ 
+}
+
+/*fin del dashboard*/
+/*barra de busqueda*/
+.barraBusqueda {
+    grid-row: 1;
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+
+
+
+/*fim de la barra de busqueda*/
+/*lista de reproduccion*/
+.listasdereproducion{
+  grid-column: 2;
+  grid-row: 2;
+  padding: 2%;
+  background-color: rgb(50, 50, 50);
+ 
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/*fin lista de reproduccion*/
+/*barra de reproducion*/
+.BarraReproducction {
+  grid-column: 1/3;
+  grid-row: 3;
+  display: flex;
+  flex-direction: column;
+  background-color: blueviolet;
+  justify-content: center;
+  align-items: center;
+  min-width: 100%;
+  min-height: 7rem;
+
+}
+/*brack point */
+/*hover*/

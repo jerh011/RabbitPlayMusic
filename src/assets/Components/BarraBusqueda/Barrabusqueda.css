@@ -1,0 +1,30 @@
+.centrar-barabusqueda{
+width: 90%;
+height: 100%;
+display: flex;
+
+}
+
+ input[type="text"] {
+  width: 90%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  padding-left: 1rem;
+    
+}
+img {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+    border: none;
+    min-width: 1.5rem;
+}
+.centrar-barabusqueda button {
+    background-color: transparent;
+    border: none;
+    pointer-events: none;   
+    width: 1.5rem;
+    
+}
