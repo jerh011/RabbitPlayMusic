@@ -4,6 +4,7 @@ async function  GetallGenero (){
 try{
     const response=await fetch(URL()+"/api/estadisticas")
     const data=await response.json();
+      console.log("errir",data)
     return  data.data.distribuccionGeneros
 }catch(error){
     console.error(error)

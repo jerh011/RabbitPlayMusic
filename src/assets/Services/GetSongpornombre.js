@@ -7,7 +7,7 @@ const GetSongpornombre = async (nombre) => {
     );
     const data = await response.json();
   
-    console.log("ncanciones",data.data.canciones);
+    //console.log("ncanciones",data.data.canciones);
     return data.data.canciones;
   } catch (error) {
     console.error("Error al buscar la canción:", error);

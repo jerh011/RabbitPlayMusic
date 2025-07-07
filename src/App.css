@@ -1,4 +1,6 @@
 html{
     background-color: black;
-    min-height: 10rem;
+    min-width: 713px;
+    min-height: 576px;
+   
 }

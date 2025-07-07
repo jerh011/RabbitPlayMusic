@@ -1,7 +1,10 @@
-.ul{
+.ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr)); /* 2 columnas */
+  gap: 1rem;
   list-style: none;
-  width: 100%;
-  
+  padding: 0;
+  margin: 0;
 }
 
 .cargandopagina{
