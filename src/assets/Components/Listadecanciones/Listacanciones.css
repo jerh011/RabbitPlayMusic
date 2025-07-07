@@ -3,6 +3,7 @@
   border-radius: 8px;
   overflow: hidden;
   transition: background-color 0.3s;
+  position: relative; /* necesario para posicionar el ícono */
 }
 
 .listmusic button {
@@ -17,11 +18,21 @@
   flex-direction: column;
   gap: 0.5rem;
   cursor: pointer;
+  position: relative; /* para que el ícono quede dentro del botón */
 }
 
 .listmusic:hover,
 .listmusic.active {
   background-color: #2a2a2a;
+}
+
+.iconoReproduccion {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 1.2rem;
+  color: #4fa8db;
+  z-index: 1;
 }
 
 .cancioheder {

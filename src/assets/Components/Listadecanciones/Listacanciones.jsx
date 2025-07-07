@@ -6,12 +6,15 @@ function Listacanciones({
   canciontitulo,
   añoSalida,
   duracionCancion,
-  onCancionSeleccionada 
+  onCancionSeleccionada,
+  activa,
 }) {
-  const nombre = artistaNombre?.nombre || artistaNombre; 
+  const nombre = artistaNombre?.nombre || artistaNombre;
+
   return (
-    <li className="listmusic">
+    <li className={`listmusic ${activa ? "active" : ""}`}>
       <button onClick={() => onCancionSeleccionada(id)}>
+        {activa && <span className="iconoReproduccion">▶️</span>}
         <div className="cancioheder">
           <p className="nombreartista">{nombre}</p>
           <p className="nombreCancion">{canciontitulo}</p>

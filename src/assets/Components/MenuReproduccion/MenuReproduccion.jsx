@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 function MenuReproduccion({ canciones, setCancionElegida }) {
   const [loading, setLoading] = useState(true);
   const [dots, setDots] = useState(".");
+  const [cancionActivaId, setCancionActivaId] = useState(null);
+
 
   useEffect(() => {
   setLoading(true);
@@ -36,19 +38,24 @@ function MenuReproduccion({ canciones, setCancionElegida }) {
     );
   }
 
+  const seleccionarCancion = (id) => {
+  setCancionElegida(id);
+  setCancionActivaId(id);
+};
   return (
     <>
       <ul className="ul">
         {canciones.map((cancion) => (
           <Listacanciones
-            key={cancion.id}
-            artistaNombre={cancion.artistaCompleto}
-            canciontitulo={cancion.titulo}
-            añoSalida={cancion.año}
-            duracionCancion={cancion.duracion}
-            id={cancion.id}
-            onCancionSeleccionada={() => setCancionElegida(cancion.id)}
-          />
+  key={cancion.id}
+  artistaNombre={cancion.artistaCompleto}
+  canciontitulo={cancion.titulo}
+  añoSalida={cancion.año}
+  duracionCancion={cancion.duracion}
+  id={cancion.id}
+  onCancionSeleccionada={seleccionarCancion}
+  activa={cancion.id === cancionActivaId}
+/>
         ))}
       </ul>
     </>
