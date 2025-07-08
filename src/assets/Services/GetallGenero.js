@@ -2,10 +2,9 @@ import URL from "./URL.js"
 
 async function  GetallGenero (){
 try{
-    const response=await fetch(URL()+"/api/estadisticas")
+    const response=await fetch(URL()+"/api/generos")
     const data=await response.json();
-      console.log("errir",data)
-    return  data.data.distribuccionGeneros
+    return data.data;
 }catch(error){
     console.error(error)
     return null;

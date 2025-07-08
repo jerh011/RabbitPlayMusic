@@ -31,8 +31,9 @@
     grid-column: 1;
     width: 100%;
     height: 100%;
-    background-color: blueviolet;
+    background-color: #4B0082 ;
     border-radius: 0 0 0 20px;
+
 }
 
 .dashboardconteiner{
@@ -89,7 +90,7 @@
   grid-row: 3;
   display: flex;
   flex-direction: column;
-  background-color: blueviolet;
+  background-color: #4B0082 ;
   justify-content:center;
   gap: 10px;
   align-items:center;
@@ -98,3 +99,4 @@
 }
 /*brack point */
 /*hover*/
+/*#483D8B	darck blue*/

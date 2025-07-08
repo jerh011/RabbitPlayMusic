@@ -1,6 +1,7 @@
 .botones{
   display: flex;
   gap: 2rem;
+ 
 }
 
 .BarradeReproduccionIzquierda{
@@ -35,7 +36,12 @@
 .playpausebutton {
   width: 50px;
   height:50px;
-  
+  background-color: transparent;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
 }
 .playpausebutton img{
   width: 50px;
@@ -46,6 +52,12 @@
 .botonessecundarios{
   width: 25px;
   height:25px;
+  background-color: transparent;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
 
 }
 .botonessecundarios img{

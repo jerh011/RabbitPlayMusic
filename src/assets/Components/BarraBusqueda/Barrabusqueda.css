@@ -23,8 +23,7 @@ img {
 }
 .centrar-barabusqueda button {
     background-color: transparent;
-    border: none;
-    pointer-events: none;   
+    border: none;   
     width: 1.5rem;
     
 }

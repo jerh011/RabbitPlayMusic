@@ -1,5 +1,5 @@
 import "./Listacanciones.css";
-
+import Play from "../../resource/icon/barradereproduccion/play.png"
 function Listacanciones({
   id,
   artistaNombre,
@@ -8,16 +8,18 @@ function Listacanciones({
   duracionCancion,
   onCancionSeleccionada,
   activa,
+  artista
 }) {
-  const nombre = artistaNombre?.nombre || artistaNombre;
-
+  
+    const nombre =artistaNombre?.nombre || artista || "Artista desconocido";
+  
   return (
     <li className={`listmusic ${activa ? "active" : ""}`}>
       <button onClick={() => onCancionSeleccionada(id)}>
-        {activa && <span className="iconoReproduccion">▶️</span>}
+        {activa && <img src={Play} className="iconoReproduccion"/>}
         <div className="cancioheder">
-          <p className="nombreartista">{nombre}</p>
           <p className="nombreCancion">{canciontitulo}</p>
+          <p className="nombreartista">{nombre}</p>
         </div>
         <div className="listaspan">
           <span className="salida">{añoSalida}</span>

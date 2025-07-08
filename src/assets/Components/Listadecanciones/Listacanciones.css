@@ -33,6 +33,7 @@
   font-size: 1.2rem;
   color: #4fa8db;
   z-index: 1;
+  
 }
 
 .cancioheder {
@@ -41,13 +42,14 @@
 }
 
 .nombreartista {
-  font-weight: bold;
-  font-size: 1rem;
+ font-size: 0.9rem;
+  color: #ccc;
 }
 
 .nombreCancion {
-  font-size: 0.9rem;
-  color: #ccc;
+  
+   font-weight: bold;
+  font-size: 1rem;
 }
 
 .listaspan {

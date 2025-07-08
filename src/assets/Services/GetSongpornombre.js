@@ -1,4 +1,4 @@
-import URL from "./URL.JS";
+import URL from "./URL";
 
 const GetSongpornombre = async (nombre) => {
   try {
@@ -6,8 +6,7 @@ const GetSongpornombre = async (nombre) => {
       `${URL()}/api/canciones?q=${nombre}`
     );
     const data = await response.json();
-  
-    //console.log("ncanciones",data.data.canciones);
+ 
     return data.data.canciones;
   } catch (error) {
     console.error("Error al buscar la canción:", error);

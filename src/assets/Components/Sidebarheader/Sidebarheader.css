@@ -1,0 +1,7 @@
+.botonDeInico{   
+    gap: 2px;
+    font-size:14px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

@@ -7,26 +7,23 @@ function MenuReproduccion({ canciones, setCancionElegida }) {
   const [dots, setDots] = useState(".");
   const [cancionActivaId, setCancionActivaId] = useState(null);
 
-
   useEffect(() => {
-  setLoading(true);
+    setLoading(true);
 
-  const agregarpunto = setInterval(() => {
-    setDots((prev) => (prev.length >= 3 ? "." : prev + "."));
-  }, 500);
+    const agregarpunto = setInterval(() => {
+      setDots((prev) => (prev.length >= 3 ? "." : prev + "."));
+    }, 500);
 
-  // Cambio tiempo de 1 a 1500 ms para que se note la carga
-  const tiempoagootado = setTimeout(() => {
-    setLoading(false);
-  }, 1500);
+    // Cambio tiempo de 1 a 1500 ms para que se note la carga
+    const tiempoagootado = setTimeout(() => {
+      setLoading(false);
+    }, 500);
 
-  return () => {
-    clearInterval(agregarpunto);
-    clearTimeout(tiempoagootado);
-  };
-  
-}, [canciones]);
-
+    return () => {
+      clearInterval(agregarpunto);
+      clearTimeout(tiempoagootado);
+    };
+  }, [canciones]);
 
   if (loading) {
     return (
@@ -39,23 +36,24 @@ function MenuReproduccion({ canciones, setCancionElegida }) {
   }
 
   const seleccionarCancion = (id) => {
-  setCancionElegida(id);
-  setCancionActivaId(id);
-};
+    setCancionElegida(id);
+    setCancionActivaId(id);
+  };
   return (
     <>
       <ul className="ul">
         {canciones.map((cancion) => (
           <Listacanciones
-  key={cancion.id}
-  artistaNombre={cancion.artistaCompleto}
-  canciontitulo={cancion.titulo}
-  añoSalida={cancion.año}
-  duracionCancion={cancion.duracion}
-  id={cancion.id}
-  onCancionSeleccionada={seleccionarCancion}
-  activa={cancion.id === cancionActivaId}
-/>
+            key={cancion.id}
+            artistaNombre={cancion.artistaCompleto}
+            canciontitulo={cancion.titulo}
+            añoSalida={cancion.año}
+            duracionCancion={cancion.duracion}
+            id={cancion.id}
+            artista={cancion.artista}
+            onCancionSeleccionada={seleccionarCancion}
+            activa={cancion.id === cancionActivaId}
+          />
         ))}
       </ul>
     </>
