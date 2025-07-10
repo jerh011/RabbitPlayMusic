@@ -3,7 +3,7 @@
   border-radius: 8px;
   overflow: hidden;
   transition: background-color 0.3s;
-  position: relative; /* necesario para posicionar el ícono */
+  position: relative;
 }
 
 .listmusic button {
@@ -15,10 +15,11 @@
   padding: 1rem;
   text-align: left;
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
   cursor: pointer;
-  position: relative; /* para que el ícono quede dentro del botón */
+  position: relative;
 }
 
 .listmusic:hover,
@@ -30,26 +31,34 @@
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
-  font-size: 1.2rem;
-  color: #4fa8db;
+  width: 20px;
+  height: 20px;
   z-index: 1;
-  
+}
+
+.imagen-portada {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
 }
 
 .cancioheder {
   display: flex;
   flex-direction: column;
-}
-
-.nombreartista {
- font-size: 0.9rem;
-  color: #ccc;
+  flex: 1;
 }
 
 .nombreCancion {
-  
-   font-weight: bold;
+  font-weight: bold;
   font-size: 1rem;
+  margin: 0;
+}
+
+.nombreartista {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin: 0;
 }
 
 .listaspan {
@@ -57,4 +66,6 @@
   justify-content: space-between;
   font-size: 0.8rem;
   color: #aaa;
+  width: 100%;
+  margin-top: 0.25rem;
 }

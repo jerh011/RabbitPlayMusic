@@ -6,6 +6,7 @@ import Siguiente from "../../resource/icon/barradereproduccion/siguiente.png";
 import Regreso from "../../resource/icon/barradereproduccion/regreso.png";
 import Barajar from "../../resource/icon/barradereproduccion/barajar.png";
 import imagen1 from "../../resource/icon/imagenesdeprueba/imagen1.webp";
+import URL from "../../Services/URL";
 import VolumenImage from "../../resource/icon/barradereproduccion/volumen.png";
 import GetCancionById from "../../Services/GetCancionById";
 import { useState, useEffect } from "react";
@@ -15,13 +16,14 @@ function BarraReproducction({ cancionElegida }) {
   const [volumen, setVolumen] = useState(10);
   const [cancion, setCancion] = useState(null);
   const [playpause, setPlayPause] = useState("play");
-
+  const [imagen, setImagen] = useState("");
   useEffect(() => {
     const fetchData = async () => {
       try {
         if (cancionElegida !== 0 && cancionElegida !== "") {
           const data = await GetCancionById(cancionElegida.toString());
           setCancion(data);
+          // setImagen(URL() + data.artista.imagen);
         }
       } catch (error) {
         console.error("Error al cargar canción:", error);
@@ -49,7 +51,14 @@ function BarraReproducction({ cancionElegida }) {
         <div className="BarradeReproduccionIzquierda">
           <div className="barraquierdaconteiner">
             <div className="barraquierdaconteiner-img">
-              <img src={imagen1} alt="album" />
+              <img
+                src={
+                  cancion && Object.keys(cancion).length > 0
+                    ? `${URL()}/${cancion.artista.imagen}`
+                    : imagen1
+                }
+                alt="album"
+              />
             </div>
 
             <div className="cancion-artista">
@@ -102,21 +111,21 @@ function BarraReproducction({ cancionElegida }) {
           </div>
         </div>
       </div>
-      <div  className="barradeAbajo">
-      <div className="barra-progreso">
-              <span className="barraactual">00:00</span>
-              <input
-                type="range"
-                className="barra"
-                value={progreso}
-                min={0}
-                max={cancion?.duracion || "0:00"}
-                onChange={handleProgreso}
-              />
-              <span className="tiemporeproduccion"></span>
-              <span className="barraactual">{cancion?.duracion || "0:00"}</span>
-              <span id="spanTimepototal" className="tiempototal"></span>
-            </div>
+      <div className="barradeAbajo">
+        <div className="barra-progreso">
+          <span className="barraactual">00:00</span>
+          <input
+            type="range"
+            className="barra"
+            value={progreso}
+            min={0}
+            max={cancion?.duracion || "0:00"}
+            onChange={handleProgreso}
+          />
+          <span className="tiemporeproduccion"></span>
+          <span className="barraactual">{cancion?.duracion || "0:00"}</span>
+          <span id="spanTimepototal" className="tiempototal"></span>
+        </div>
       </div>
     </>
   );

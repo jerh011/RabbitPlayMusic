@@ -1,7 +1,26 @@
-.botonDeInico{   
-    gap: 2px;
-    font-size:14px;
-    color: white;
-    border: none;
-    cursor: pointer;
+.botonDeInico {
+  gap: 1px;
+  font-size: 14px;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
+.botonDeInico p {
+  font-weight: bold;
+  background: linear-gradient(45deg, #ffffff, #c4b5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/*
+
+.Titulo-Pricipal p {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #4b0082, #3a47d5, #4b0082);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeInDown 1s ease-in-out;
+  margin-bottom: 1rem;
+}
+
+*/

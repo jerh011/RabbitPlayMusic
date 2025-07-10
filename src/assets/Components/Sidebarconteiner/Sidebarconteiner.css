@@ -45,7 +45,7 @@
 }
 
 .icono {
-  display: inline-block;  /* <--- Agregar esta línea */
+  display: inline-block; /* <--- Agregar esta línea */
   transition: transform 0.3s ease;
   font-size: 20px;
   color: #ccc;
@@ -69,12 +69,12 @@
 }
 
 .lista-generos.abierto {
-  max-height: 500px; 
+  max-height: 500px;
   padding-left: 0;
   margin: 0;
 }
 .boton-navegacion {
-  all: unset;                        
+  all: unset;
   padding: 12px 20px;
   color: #ccc;
   font-size: 15px;
@@ -87,8 +87,8 @@
 }
 
 .boton-navegacion:hover,
-.boton-navegacion:focus  {
+.boton-navegacion:focus {
   background-color: #1a1a1a;
   color: #fff;
-  border-left: 3px solid #5a2c91;    
+  border-left: 3px solid #5a2c91;
 }

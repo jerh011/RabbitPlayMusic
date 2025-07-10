@@ -1,19 +1,21 @@
 import "./MainPage.css";
-import Sidebarheader from "../Components/Sidebarheader/Sidebarheader"  
+import Sidebarheader from "../Components/Sidebarheader/Sidebarheader";
 //import Sidebarheader from "../Components/Dashboardheader/Dashboardheader";
-import Sidebarconteiner from "../Components/Sidebarconteiner/Sidebarconteiner"
+import Sidebarconteiner from "../Components/Sidebarconteiner/Sidebarconteiner";
 //import Dashboardconteiner from "../Components/Sidebarconteiner/Dashboardconteiner";
 import Barrabusqueda from "../Components/BarraBusqueda/Barrabusqueda";
 import BarraReproduccion from "../Components/BarraReproducction/BarraReproduccion";
 import MenuReproduccion from "../Components/MenuReproduccion/MenuReproduccion";
 import { useEffect, useState } from "react";
 import GetallSong from "../Services/GetallSong";
-
+import { Routes, Route, useNavigate } from "react-router-dom";
+import Albumes from "../Components/Albumes/Albumes";
+import Artistas from "../Components/Artistas/Artistas";
 function MainPage() {
   const [canciones, setCanciones] = useState([]);
   const [cancionbuscadapornombre, setcancionnombre] = useState([]);
   const [cancionElegida, setCancionElegida] = useState("");
-  
+  const navigate = useNavigate();
   useEffect(() => {
     const obtenerCanciones = async () => {
       try {
@@ -22,6 +24,7 @@ function MainPage() {
           setCanciones(response);
         } else {
           setCanciones(cancionbuscadapornombre);
+          navigate("/Inicio");
         }
       } catch (err) {
         console.error("Error al obtener canciones:", err.message);
@@ -35,19 +38,29 @@ function MainPage() {
       <div className="dashboardheader">
         <Sidebarheader />
       </div>
-      
+
       <div className="dashboardconteiner">
         <Sidebarconteiner />
       </div>
-      
+
       <div className="barraBusqueda">
         <Barrabusqueda setcancionnombre={setcancionnombre} />
       </div>
-      
+
       <div className="listasdereproducion">
-        <MenuReproduccion
-          canciones={canciones}
-          setCancionElegida={setCancionElegida}/>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <MenuReproduccion
+                canciones={canciones}
+                setCancionElegida={setCancionElegida}
+              />
+            }
+          />
+          <Route path="/Albumes" element={<Albumes />} />
+          <Route path="/Artistas" element={<Artistas />} />
+        </Routes>
       </div>
 
       <div className="BarraReproducction">

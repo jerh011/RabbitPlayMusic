@@ -6,8 +6,28 @@ function MenuReproduccion({ canciones, setCancionElegida }) {
   const [loading, setLoading] = useState(true);
   const [dots, setDots] = useState(".");
   const [cancionActivaId, setCancionActivaId] = useState(null);
-
+  // const [allcanciones, SerAlcaciones] = useState([]);
+  /*useEffect(() => {
+    const obtenerCanciones = async () => {
+      try {
+        if (cancionbuscadapornombre.length === 0) {
+          const response = await GetallSong();
+          setCanciones(response);
+        } else {
+          setCanciones(cancionbuscadapornombre);
+          navigate("/Inicio");
+        }
+      } catch (err) {
+        console.error("Error al obtener canciones:", err.message);
+      }
+    };
+    obtenerCanciones();
+  }, [cancionbuscadapornombre]); */
   useEffect(() => {
+    // const GetallCanciones = async () => {
+    //   const response = await GetallSong();
+    //   setCancionesall(response);
+    // };
     setLoading(true);
 
     const agregarpunto = setInterval(() => {
@@ -45,7 +65,7 @@ function MenuReproduccion({ canciones, setCancionElegida }) {
         {canciones.map((cancion) => (
           <Listacanciones
             key={cancion.id}
-            artistaNombre={cancion.artistaCompleto}
+            artistaCompleto={cancion.artistaCompleto}
             canciontitulo={cancion.titulo}
             añoSalida={cancion.año}
             duracionCancion={cancion.duracion}

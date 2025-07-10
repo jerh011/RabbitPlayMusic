@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import GetallGenero from "../../Services/GetallGenero";
+import { useNavigate } from "react-router-dom";
 import "./Sidebarconteiner.css";
 function Sidebarconteiner() {
   const [generos, setGeneros] = useState([]);
   const [abierto, setAbierto] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     const LoadGenero = async () => {
       try {
@@ -17,13 +19,30 @@ function Sidebarconteiner() {
     };
     LoadGenero();
   }, []);
-
+  const filtrarGenero = (nombre) => {
+    alert(nombre);
+  };
   return (
     <>
       <div className="menu-navegacion">
-        <button className="boton-navegacion">Principal</button>
-        <button className="boton-navegacion">Albunes</button>
-        <button className="boton-navegacion">Artistas</button>
+        <button
+          className="boton-navegacion"
+          onClick={() => navigate("/Inicio")}
+        >
+          Canciones
+        </button>
+        <button
+          className="boton-navegacion"
+          onClick={() => navigate("/Inicio/Albumes")}
+        >
+          Albumes
+        </button>
+        <button
+          className="boton-navegacion"
+          onClick={() => navigate("/Inicio/Artistas")}
+        >
+          Artistas
+        </button>
       </div>
       <div className="generos">
         <button
@@ -33,8 +52,7 @@ function Sidebarconteiner() {
           aria-controls="lista-generos"
         >
           <span className={`icono ${abierto ? "abierto" : ""}`}>▾</span>
-           Géneros 
-
+          Géneros
         </button>
         <ul
           id="lista-generos"

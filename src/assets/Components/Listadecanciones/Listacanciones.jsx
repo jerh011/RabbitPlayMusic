@@ -1,29 +1,41 @@
 import "./Listacanciones.css";
-import Play from "../../resource/icon/barradereproduccion/play.png"
+import Play from "../../resource/icon/barradereproduccion/play.png";
+import Imagen from "../../resource/icon/imagenesdeprueba/imagen1.webp";
+import URL from "../../Services/URL.js";
 function Listacanciones({
   id,
-  artistaNombre,
+  artistaCompleto,
   canciontitulo,
   añoSalida,
   duracionCancion,
   onCancionSeleccionada,
   activa,
-  artista
+  artista,
 }) {
-  
-    const nombre =artistaNombre?.nombre || artista || "Artista desconocido";
-  
+  const nombre = artistaCompleto?.nombre || artista || "Artista desconocido";
+  const imagen = artistaCompleto?.imagen
+    ? `${URL()}/${artistaCompleto.imagen}`
+    : Imagen;
   return (
     <li className={`listmusic ${activa ? "active" : ""}`}>
       <button onClick={() => onCancionSeleccionada(id)}>
-        {activa && <img src={Play} className="iconoReproduccion"/>}
+        {activa && (
+          <img src={Play} alt="Reproduciendo" className="iconoReproduccion" />
+        )}
+
+        <img
+          src={imagen}
+          alt="Portada del artista"
+          className="imagen-portada"
+        />
+
         <div className="cancioheder">
           <p className="nombreCancion">{canciontitulo}</p>
           <p className="nombreartista">{nombre}</p>
-        </div>
-        <div className="listaspan">
-          <span className="salida">{añoSalida}</span>
-          <span className="tiempo">{duracionCancion}</span>
+          <div className="listaspan">
+            <span className="salida">{añoSalida}</span>
+            <span className="tiempo">{duracionCancion}</span>
+          </div>
         </div>
       </button>
     </li>
