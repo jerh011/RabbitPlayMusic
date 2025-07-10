@@ -56,7 +56,7 @@
 .listasdereproducion {
   grid-column: 2;
   grid-row: 2;
-  padding: 2%;
+
   background-color: rgb(50, 50, 50);
   overflow-y: scroll;
   overflow-x: hidden;

@@ -1,0 +1,63 @@
+.album-page {
+  background: linear-gradient(to bottom, #4b0082, #1a1a1a);
+  color: white;
+  padding: 40px;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+.album-header {
+  display: flex;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.album-cover {
+  width: 230px;
+  height: 230px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.album-descripcion .album-type {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #e0e0e0;
+  margin-bottom: 5px;
+}
+
+.album-descripcion .album-title {
+  font-size: 48px;
+  margin: 5px 0;
+}
+
+.album-descripcion .album-description {
+  font-size: 14px;
+  color: #cfcfcf;
+}
+
+.album-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.song-list-header,
+.song-row {
+  display: grid;
+  grid-template-columns: 40px 2fr 2fr 1fr 60px;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.song-list-header {
+  font-weight: bold;
+  color: #b3b3b3;
+  border-bottom: 1px solid #333;
+}
+
+.song-row:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+}
