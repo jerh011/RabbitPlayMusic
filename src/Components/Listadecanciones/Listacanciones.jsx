@@ -1,6 +1,6 @@
 import "./Listacanciones.css";
-import Play from "../../resource/icon/barradereproduccion/play.png";
-import Imagen from "../../resource/icon/imagenesdeprueba/imagen1.webp";
+import Play from "../../assets/resource/icon/barradereproduccion/play.png";
+import Imagen from "../../assets/resource/icon/imagenesdeprueba/imagen1.webp";
 import URL from "../../Services/URL.js";
 function Listacanciones({
   id,

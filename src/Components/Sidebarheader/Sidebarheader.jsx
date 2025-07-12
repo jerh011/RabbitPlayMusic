@@ -1,7 +1,7 @@
 import "../../Main/MainPage.css";
 import "./Sidebarheader.css";
 import { useNavigate } from "react-router-dom";
-import Conejo from "../../resource/icon/Dashboard/conejo.png";
+import Conejo from "../../assets/resource/icon/Dashboard/conejo.png";
 function Sidebarheader() {
   const navigate = useNavigate();
   return (

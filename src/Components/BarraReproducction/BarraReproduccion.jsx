@@ -1,13 +1,13 @@
 import "./BarraReproduccion.css";
-import Play from "../../resource/icon/barradereproduccion/play.png";
-import Pause from "../../resource/icon/barradereproduccion/pausa.png";
-import Retroseso from "../../resource/icon/barradereproduccion/anterior.png";
-import Siguiente from "../../resource/icon/barradereproduccion/siguiente.png";
-import Regreso from "../../resource/icon/barradereproduccion/regreso.png";
-import Barajar from "../../resource/icon/barradereproduccion/barajar.png";
-import imagen1 from "../../resource/icon/imagenesdeprueba/imagen1.webp";
+import Play from "../../assets/resource/icon/barradereproduccion/play.png";
+import Pause from "../../assets/resource/icon/barradereproduccion/pausa.png";
+import Retroseso from "../../assets/resource/icon/barradereproduccion/anterior.png";
+import Siguiente from "../../assets/resource/icon/barradereproduccion/siguiente.png";
+import Regreso from "../../assets/resource/icon/barradereproduccion/regreso.png";
+import Barajar from "../../assets/resource/icon/barradereproduccion/barajar.png";
+import imagen1 from "../../assets/resource/icon/imagenesdeprueba/imagen1.webp";
 import URL from "../../Services/URL";
-import VolumenImage from "../../resource/icon/barradereproduccion/volumen.png";
+import VolumenImage from "../../assets/resource/icon/barradereproduccion/volumen.png";
 import GetCancionById from "../../Services/GetCancionById";
 import { useState, useEffect } from "react";
 

@@ -1,6 +1,6 @@
 import "./Barrabusqueda.css";
-import lupa from "../../resource/icon/busquedalista/buscar.png";
-import { use, useEffect, useState } from "react";
+import lupa from "../../assets/resource/icon/busquedalista/buscar.png";
+import { useEffect, useState } from "react";
 import GetSongpornombre from "../../Services/GetSongpornombre.js";
 /*busqueda automatica */
 // function Barrabusqueda({ setcancionnombre }) {
