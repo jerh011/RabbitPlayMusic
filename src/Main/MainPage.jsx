@@ -1,11 +1,9 @@
 import "./MainPage.css";
-import Sidebarheader from "../Components/Sidebarheader/Sidebarheader";
-//import Sidebarheader from "../Components/Dashboardheader/Dashboardheader";
-import Sidebarconteiner from "../Components/Sidebarconteiner/Sidebarconteiner";
-//import Dashboardconteiner from "../Components/Sidebarconteiner/Dashboardconteiner";
-import Barrabusqueda from "../Components/BarraBusqueda/Barrabusqueda";
-import BarraReproduccion from "../Components/BarraReproducction/BarraReproduccion";
-import MenuReproduccion from "../Components/MenuReproduccion/MenuReproduccion";
+import Sidebarheader from "../Layout/Sidebarheader/Sidebarheader";
+import Sidebarconteiner from "../Layout/Sidebarconteiner/Sidebarconteiner";
+import Barrabusqueda from "../Layout/BarraBusqueda/Barrabusqueda";
+import BarraReproduccion from "../Layout/BarraReproducction/BarraReproduccion";
+import MenuReproduccion from "../Layout/MenuReproduccion/MenuReproduccion";
 import { useEffect, useState } from "react";
 import GetallSong from "../Services/GetallSong";
 import { Routes, Route, useNavigate } from "react-router-dom";

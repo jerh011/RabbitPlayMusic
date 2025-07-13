@@ -1,5 +1,5 @@
 import "./MenuReproduccion.css";
-import Listacanciones from "../Listadecanciones/Listacanciones";
+import Listacanciones from "../../Components/Listadecanciones/Listacanciones";
 import { useState, useEffect } from "react";
 
 function MenuReproduccion({ canciones, setCancionElegida }) {
