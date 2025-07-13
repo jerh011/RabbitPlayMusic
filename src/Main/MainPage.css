@@ -64,7 +64,7 @@
 
 /*fin lista de reproduccion*/
 /*barra de reproducion*/
-.BarraReproducction {
+.BarraReproduccion {
   grid-column: 1/3;
   grid-row: 3;
   display: flex;

@@ -23,9 +23,9 @@
   border-radius: 1000px;
   animation: carga 1s infinite linear;
   border-top: 10px solid rgba(79, 168, 219, 0);
-  border-bottom: 10px solid rgb(79, 168, 219);
-  border-right: 10px solid rgb(79, 168, 219);
-  border-left: 10px solid rgb(79, 168, 219);
+  border-bottom: 10px solid #8000ff;
+  border-right: 10px solid #8000ff;
+  border-left: 10px solid #8000ff;
   z-index: 0;
 }
 .contentcarga p {
@@ -33,7 +33,7 @@
   animation: antirrotacion 1s infinite linear;
   font-weight: bold;
   font-size: 14px;
-  color: rgb(79, 168, 219);
+  color: #8000ff;
 }
 
 @keyframes carga {

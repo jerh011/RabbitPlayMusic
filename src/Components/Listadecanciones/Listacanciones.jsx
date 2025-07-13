@@ -2,6 +2,7 @@ import "./Listacanciones.css";
 import Play from "../../assets/resource/icon/barradereproduccion/play.png";
 import Imagen from "../../assets/resource/icon/imagenesdeprueba/imagen1.webp";
 import URL from "../../Services/URL.js";
+
 function Listacanciones({
   id,
   artistaCompleto,
@@ -16,6 +17,7 @@ function Listacanciones({
   const imagen = artistaCompleto?.imagen
     ? `${URL()}/${artistaCompleto.imagen}`
     : Imagen;
+
   return (
     <li className={`listmusic ${activa ? "active" : ""}`}>
       <button onClick={() => onCancionSeleccionada(id)}>
