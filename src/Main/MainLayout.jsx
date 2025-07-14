@@ -1,22 +1,22 @@
+import { Outlet } from "react-router-dom";
+import { useState, useEffect } from "react";
 import "./MainPage.css";
+
 import Sidebarheader from "../Layout/Sidebarheader/Sidebarheader";
 import Sidebarconteiner from "../Layout/Sidebarconteiner/Sidebarconteiner";
 import Barrabusqueda from "../Layout/BarraBusqueda/Barrabusqueda";
 import BarraReproduccion from "../Layout/BarraReproducction/BarraReproduccion";
-import Navegation from "../Layout/NavegacionContainer/NavegacionContainer";
-import { useState, useEffect } from "react";
 
 function MainLayout() {
-  const [cancionES, setCancionEs] = useState([]); // Lista de canciones
-  const [indiceActual, setIndiceActual] = useState(0); // Índice de la canción actual
-  const [repetir, setRepetir] = useState(false); // Índice de la canción actual
+  const [cancionES, setCancionEs] = useState([]);
+  const [indiceActual, setIndiceActual] = useState(0);
+  const [repetir, setRepetir] = useState(false);
 
   const cancionElegida = cancionES[indiceActual]?.id || null;
 
   const cambiarCancion = (direccion) => {
     setIndiceActual((prev) => {
       const nuevoIndice = prev + direccion;
-
       if ((nuevoIndice < 0 || nuevoIndice >= cancionES.length) && repetir)
         return 0;
       return nuevoIndice;
@@ -44,13 +44,17 @@ function MainLayout() {
       </div>
 
       <div className="listasdereproducion">
-        <Navegation
-          setCancionElegida={(id) => {
-            const index = cancionES.findIndex((c) => c.id === id);
-            if (index !== -1) setIndiceActual(index);
+        <Outlet
+          context={{
+            setCancionElegida: (id) => {
+              const index = cancionES.findIndex(
+                (idcancion) => idcancion.id === id
+              );
+              if (index !== -1) setIndiceActual(index);
+            },
+            setCancionEs,
+            cancionreproduccion: cancionElegida,
           }}
-          setCancionEs={setCancionEs}
-          cancionreproduccion={cancionElegida}
         />
       </div>
 

@@ -120,6 +120,7 @@ function BarraReproduccion({
               >
                 <img
                   src={replay === true ? Regresowhite : Regreso}
+                  className={replay === true ? "Regresowhite" : "Regreso"}
                   alt="botón regreso"
                 />
               </button>

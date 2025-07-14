@@ -1,41 +1,38 @@
-.botones{
+.botones {
   display: flex;
   gap: 2rem;
- 
 }
 
-.BarradeReproduccionIzquierda{
+.BarradeReproduccionIzquierda {
   display: flex;
 }
-.barraquierdaconteiner{
-  display:flex;
+.barraquierdaconteiner {
+  display: flex;
   flex-direction: row;
-  justify-content:left;
+  justify-content: left;
   align-items: center;
   width: 100%;
   height: 100%;
   gap: 10px;
 }
-.BarradeReproduccionCentral{
+.BarradeReproduccionCentral {
   width: 40%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap:20rem;
-
-} 
-.BarraCentralConteiner{
+  gap: 20rem;
+}
+.BarraCentralConteiner {
   width: 30rem;
   display: flex;
   flex-direction: column;
   gap: 10px;
-
 }
 
 .playpausebutton {
   width: 50px;
-  height:50px;
+  height: 50px;
   background-color: transparent;
   border-radius: 50px;
   display: flex;
@@ -43,93 +40,88 @@
   justify-content: center;
   border: none;
 }
-.playpausebutton img{
+.playpausebutton img {
   width: 50px;
-  height:50px;
-  
+  height: 50px;
 }
 
-.botonessecundarios{
+.botonessecundarios {
   width: 25px;
-  height:25px;
+  height: 25px;
   background-color: transparent;
   border-radius: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
-
 }
-.botonessecundarios img{
+.botonessecundarios img {
   width: 100%;
-  height:100%;
+  height: 100%;
 }
 
-
-.barra-progreso{
+.barra-progreso {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   gap: 8px;
 }
-.BarradeReproduccionDerecha{
+.BarradeReproduccionDerecha {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 20%;
-} 
+}
 
-
-.BarradeReproduccionIzquierda img{
-  width:  70px;
+.BarradeReproduccionIzquierda img {
+  width: 70px;
   height: 70px;
 }
 .cancion-artista {
-  width: 100px;    
+  width: 100px;
   overflow: hidden;
   position: relative;
 }
 
 .scroll-text {
   white-space: nowrap;
-  animation: scroll-left 10s linear infinite; 
+  animation: scroll-left 10s linear infinite;
 }
-.barradevolumen{
+.barradevolumen {
   display: flex;
-  width:100%;
+  width: 100%;
   gap: 2px;
 }
-.barradevolumen input[type="range"]{
+.barradevolumen input[type="range"] {
   width: 80%;
-  max-width:9rem ;
+  max-width: 9rem;
 }
 
-.botones-repoduccion{
+.botones-repoduccion {
   width: 100%;
   height: 90%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
-.barradeArriba{
+.barradeArriba {
   width: 100%;
   height: 50%;
   display: flex;
-  justify-content:space-around;
+  justify-content: space-around;
   align-items: center;
 }
-.barradeAbajo{
+.barradeAbajo {
   width: 100%;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
   min-width: 560px;
 }
 .barra-progreso input[type="range"] {
- background: transparent;
- background: linear-gradient(
+  background: transparent;
+  background: linear-gradient(
     to right,
     #0099ff 0%,
     #0099ff 50%,
@@ -138,8 +130,28 @@
   );
   width: 80%;
 }
+.Regresowhite {
+  border: black solid 1px;
+  border-radius: 100px;
+  animation: Rotation 0.25s linear;
+}
+
+@keyframes Rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
 @keyframes scroll-left {
-  0% {transform: translateX(100%);}
-  50% {transform: translateX(-100%)}
-  100% {transform: translateX(100%)}
+  0% {
+    transform: translateX(100%);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
