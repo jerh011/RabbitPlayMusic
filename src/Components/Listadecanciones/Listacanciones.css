@@ -70,3 +70,32 @@
   width: 100%;
   margin-top: 0.25rem;
 }
+@media screen and (max-width: 425px) 
+{
+ .artistacacancion{
+   overflow: hidden;
+  position: relative;
+ }
+  .sicebarconteiner{
+    display: none;
+  }
+
+ .listmusic button {
+  padding: .5rem;
+  gap: .5rem;
+ }
+ .imagen-portada{
+   width: 40px;
+  height: 100%;
+ }
+ .nombreCancion{
+  max-height:50px ;
+  max-width: 40px;
+  white-space: nowrap;
+ 
+  
+ }
+
+ 
+ 
+}

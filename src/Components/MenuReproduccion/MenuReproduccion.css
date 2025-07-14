@@ -1,8 +1,19 @@
 .ul {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr)); /* 2 columnas */
+  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
   gap: 1rem;
   list-style: none;
-  padding: 1%;
-  margin: 0;
+  padding: 25px;
+  
+}
+
+@media screen and (max-width: 768px) 
+{
+  .ul{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: .5rem;
+  }
+
 }

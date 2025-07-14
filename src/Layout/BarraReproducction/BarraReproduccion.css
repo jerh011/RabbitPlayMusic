@@ -6,6 +6,7 @@
 .BarradeReproduccionIzquierda {
   display: flex;
 }
+
 .barraquierdaconteiner {
   display: flex;
   flex-direction: row;
@@ -154,4 +155,55 @@
   100% {
     transform: translateX(100%);
   }
+}
+
+@media screen and (max-width: 425px) {
+  .BarradeReproduccionIzquierda img {
+    display: none;
+  }
+
+  .cancion-artista {
+    width: 100%;
+  }
+
+  .artista-nombre {
+    display: none;
+  }
+
+  .scroll-text {
+    animation: none;
+  }
+
+  .barradeArriba {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-row: 1fr;
+    gap: 0.2rem;
+  }
+
+  .BarradeReproduccionIzquierda {
+    grid-row: 1;
+    justify-content: center;
+  }
+
+  .BarradeReproduccionCentral {
+    width: 100%;
+    grid-row: 2;
+    justify-content: center;
+  }
+
+  .BarradeReproduccionDerecha {
+    display: none;
+  }
+
+  .BarraCentralConteiner {
+    width: 100%;
+    flex-direction: column;
+
+  }
+.botones-repoduccion {
+  width: 100%;
+  gap: 2rem;
+}
 }

@@ -31,11 +31,11 @@ function MainLayout() {
 
   return (
     <div className="main">
-      <div className="dashboardheader">
+      <div className="sicebarheader">
         <Sidebarheader />
       </div>
 
-      <div className="dashboardconteiner">
+      <div className="sicebarconteiner">
         <Sidebarconteiner />
       </div>
 
@@ -43,7 +43,7 @@ function MainLayout() {
         <Barrabusqueda />
       </div>
 
-      <div className="listasdereproducion">
+      <div className="navegacion">
         <Outlet
           context={{
             setCancionElegida: (id) => {
