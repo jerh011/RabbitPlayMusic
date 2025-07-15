@@ -2,48 +2,57 @@ import { useState, useEffect } from "react";
 import GetallGenero from "../../Services/GetallGenero";
 import { useNavigate } from "react-router-dom";
 import "./Sidebarconteiner.css";
-function Sidebarconteiner() {
+
+function Sidebarconteiner({ cerrarSidebar }) {
   const [generos, setGeneros] = useState([]);
   const [abierto, setAbierto] = useState(false);
   const navigate = useNavigate();
+
   useEffect(() => {
     const LoadGenero = async () => {
       try {
         const response = await GetallGenero();
-
         setGeneros(response);
       } catch (error) {
         console.error("Error al buscar las canciónes:", error);
-        return null;
       }
     };
     LoadGenero();
   }, []);
+
   const filtrarGenero = (nombre) => {
     alert(nombre);
+    if (cerrarSidebar) cerrarSidebar(); // cerrar menú si se proporcionó la función
   };
+
+  const navegarYcerrar = (ruta) => {
+    navigate(ruta);
+    if (cerrarSidebar) cerrarSidebar();
+  };
+
   return (
     <>
       <div className="menu-navegacion">
         <button
           className="boton-navegacion"
-          onClick={() => navigate("/Inicio")}
+          onClick={() => navegarYcerrar("/Inicio")}
         >
           Canciones
         </button>
         <button
           className="boton-navegacion"
-          onClick={() => navigate("/Inicio/Albumes")}
+          onClick={() => navegarYcerrar("/Inicio/Albumes")}
         >
           Albumes
         </button>
         <button
           className="boton-navegacion"
-          onClick={() => navigate("/Inicio/Artistas")}
+          onClick={() => navegarYcerrar("/Inicio/Artistas")}
         >
           Artistas
         </button>
       </div>
+
       <div className="generos">
         <button
           className="boton-navegacion acordeon-toggle"
@@ -54,6 +63,7 @@ function Sidebarconteiner() {
           <span className={`icono ${abierto ? "abierto" : ""}`}>▾</span>
           Géneros
         </button>
+
         <ul
           id="lista-generos"
           className={`lista-generos ${abierto ? "abierto" : "cerrado"}`}

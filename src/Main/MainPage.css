@@ -7,8 +7,8 @@
   grid-template-rows: 3rem 1fr 7.5rem;
   grid-template-columns: 9rem 1fr;
   min-height: 480px;
+  position: relative;
 }
-
 
 .sicebarheader {
   grid-row: 1;
@@ -38,7 +38,6 @@
   color: white;
 }
 
-
 .barraBusqueda {
   grid-row: 1;
   grid-column: 2;
@@ -50,7 +49,6 @@
   background-color: white;
 }
 
-
 .navegacion {
   grid-column: 2;
   grid-row: 2;
@@ -58,7 +56,6 @@
   overflow-y: scroll;
   overflow-x: hidden;
 }
-
 
 .BarraReproduccion {
   grid-column: 1/3;
@@ -69,26 +66,84 @@
   justify-content: center;
   gap: 10px;
   align-items: center;
-
 }
-/*brack point */
-/*hover*/
-/*#483D8B	darck blue*/
 
-@media screen and (max-width: 425px) 
-{
-  .sicebarconteiner{
+/* Ocultar botón y sidebar móvil por defecto en pantallas grandes */
+.btn-toggle-sidebar,
+.sidebar-desplegable {
+  display: none;
+}
+
+/* ------------------------------ */
+/*         SOLO PARA MÓVILES      */
+/* ------------------------------ */
+@media screen and (max-width: 425px) {
+  .sicebarconteiner {
     display: none;
   }
-  .sicebarheader{
-    display: none;
-  }
-  .navegacion{
-     grid-column: span 2;
-    
-  }
-  .barraBusqueda{
+
+  .navegacion {
     grid-column: span 2;
   }
 
+  .barraBusqueda {
+    grid-column: span 2;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .overlay.activo {
+    opacity: 1;
+    pointer-events: all;
+    z-index: 1;
+  }
+
+  .sidebar-desplegable {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: -70%;
+    width: 70%;
+    height: 100vh;
+    background-color: #4b0082;
+    z-index: 2;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+    border-radius: 0 20px 20px 0;
+  }
+
+  .sidebar-desplegable.activo {
+    left: 0;
+  }
+
+  .btn-toggle-sidebar {
+    display: block;
+    position: fixed;
+    top: 4rem;
+    left: 1rem;
+    z-index: 3;
+    background: #4b0082;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: left 0.3s ease;
+  }
+
+  .btn-toggle-sidebar.activo {
+    left: 70%;
+  }
 }

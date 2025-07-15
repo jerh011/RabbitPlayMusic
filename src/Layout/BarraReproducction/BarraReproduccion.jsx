@@ -82,10 +82,9 @@ function BarraReproduccion({
 
             <div className="cancion-artista">
               <p className="scroll-text">{cancion?.titulo || "Sin título"}</p>
-              <div className="artista-nombre">
+              <div className="artista-nombre-barra">
                 <span>{cancion?.artista?.nombre || "Desconocido"}</span>
               </div>
-            
             </div>
           </div>
         </div>

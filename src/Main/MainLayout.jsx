@@ -11,6 +11,7 @@ function MainLayout() {
   const [cancionES, setCancionEs] = useState([]);
   const [indiceActual, setIndiceActual] = useState(0);
   const [repetir, setRepetir] = useState(false);
+  const [sidebarAbierto, setSidebarAbierto] = useState(false); // Estado para abrir/cerrar el sidebar móvil
 
   const cancionElegida = cancionES[indiceActual]?.id || null;
 
@@ -31,12 +32,28 @@ function MainLayout() {
 
   return (
     <div className="main">
+      <div className={`sidebar-desplegable ${sidebarAbierto ? "activo" : ""}`}>
+        <Sidebarconteiner cerrarSidebar={() => setSidebarAbierto(false)} />
+      </div>
+
+      <button
+        className={`btn-toggle-sidebar ${sidebarAbierto ? "activo" : ""}`}
+        onClick={() => setSidebarAbierto(!sidebarAbierto)}
+      >
+        {sidebarAbierto ? "✕" : "☰"}
+      </button>
+
+      <div
+        className={`overlay ${sidebarAbierto ? "activo" : ""}`}
+        onClick={() => setSidebarAbierto(false)}
+      ></div>
+
       <div className="sicebarheader">
         <Sidebarheader />
       </div>
 
       <div className="sicebarconteiner">
-        <Sidebarconteiner />
+        <Sidebarconteiner cerrarSidebar={() => setSidebarAbierto(false)} />
       </div>
 
       <div className="barraBusqueda">

@@ -157,7 +157,7 @@
   }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 540px) {
   .BarradeReproduccionIzquierda img {
     display: none;
   }
@@ -166,7 +166,7 @@
     width: 100%;
   }
 
-  .artista-nombre {
+  .artista-nombre-barra {
     display: none;
   }
 
@@ -200,10 +200,16 @@
   .BarraCentralConteiner {
     width: 100%;
     flex-direction: column;
-
   }
-.botones-repoduccion {
-  width: 100%;
-  gap: 2rem;
-}
+  .botones-repoduccion {
+    width: 100%;
+    gap: 2rem;
+  }
+  .barradeAbajo {
+    justify-content: center;
+    align-items: center;
+  }
+  .barra-progreso {
+    width: 60%;
+  }
 }
