@@ -25,7 +25,7 @@ function MainLayout() {
   };
 
   useEffect(() => {
-    if (cancionES.length > 0) {
+    if (cancionES.length > 0 && cancionElegida === null) {
       setIndiceActual(0);
     }
   }, [cancionES]);

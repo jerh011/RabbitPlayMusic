@@ -26,13 +26,8 @@ function BarraReproduccion({
   const [replay, SetReplay] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
-      {
-        cancionElegida != null || cancionES != null
-          ? setPlayPause(false)
-          : setPlayPause(true);
-      }
-
       try {
+        setPlayPause(false); // Siempre pausar cuando cambia la canción
         const data = await GetCancionById(cancionElegida);
         setCancion(data);
         setProgreso(0);
@@ -41,8 +36,10 @@ function BarraReproduccion({
       }
     };
 
-    fetchData();
-  }, [cancionElegida, cancionES]);
+    if (cancionElegida !== null) {
+      fetchData();
+    }
+  }, [cancionElegida]);
 
   const handleProgreso = (e) => setProgreso(Number(e.target.value));
   const handleVolumen = (e) => setVolumen(Number(e.target.value));

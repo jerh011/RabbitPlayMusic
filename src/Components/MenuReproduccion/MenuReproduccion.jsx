@@ -1,9 +1,9 @@
 import "./MenuReproduccion.css";
-import Listacanciones from "../Listadecanciones/Listacanciones";
+import ListadocancionesGid from "../ListadocancionesGid/ListadoGid";
 import { useState, useEffect } from "react";
 import GetallSong from "../../Services/GetallSong";
 import { useOutletContext } from "react-router-dom";
-import Carga from "../Carga/Carga";
+import Carga from "../Cargacanciones/Carga";
 function MenuReproduccion() {
   const [canciones, setCanciones] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -18,7 +18,7 @@ function MenuReproduccion() {
         setLoading(true);
         const cancionesData = await GetallSong();
         setCanciones(cancionesData);
-
+        setCancionEs(cancionesData);
         timeout = setTimeout(() => {
           setLoading(false);
         }, 500);
@@ -40,28 +40,15 @@ function MenuReproduccion() {
   }
 
   const seleccionarCancion = (id) => {
-    setCancionEs(canciones);
     setCancionElegida(id);
   };
 
   return (
-    <ul className="ul">
-      {canciones.map(
-        ({ id, artistaCompleto, titulo, año, duracion, artista }) => (
-          <Listacanciones
-            key={id}
-            id={id}
-            artistaCompleto={artistaCompleto}
-            canciontitulo={titulo}
-            añoSalida={año}
-            duracionCancion={duracion}
-            artista={artista}
-            onCancionSeleccionada={seleccionarCancion}
-            activa={id === cancionreproduccion}
-          />
-        )
-      )}
-    </ul>
+    <ListadocancionesGid
+      canciones={canciones}
+      onCancionSeleccionada={seleccionarCancion}
+      activa={cancionreproduccion}
+    />
   );
 }
 
