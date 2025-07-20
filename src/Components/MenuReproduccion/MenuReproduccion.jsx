@@ -18,7 +18,6 @@ function MenuReproduccion() {
         setLoading(true);
         const cancionesData = await GetallSong();
         setCanciones(cancionesData);
-        setCancionEs(cancionesData);
 
         timeout = setTimeout(() => {
           setLoading(false);
@@ -41,6 +40,7 @@ function MenuReproduccion() {
   }
 
   const seleccionarCancion = (id) => {
+    setCancionEs(canciones);
     setCancionElegida(id);
   };
 

@@ -1,115 +1,46 @@
 import "./Artistas.css";
+import GetAllArtistas from "../../Services/GetAllArtistas";
+import { useEffect, useState } from "react";
+import URL from "../../Services/URL";
 function Artistas() {
-  const artistasEjemplo = [
-    {
-      id: 1,
-      nombre: "Pink Floyd",
-      imagen: "https://api-musica.netlify.app/media/pink-floyd.jpeg",
-      info: "Reino Unido 1965",
-      descripcion:
-        "Banda británica de rock progresivo, conocida por sus álbumes conceptuales y sus innovaciones en el estudio.",
-    },
-    {
-      id: 1,
-      nombre: "Pink Floyd",
-      imagen: "https://api-musica.netlify.app/media/pink-floyd.jpeg",
-      info: "Reino Unido 1965",
-      descripcion:
-        "Banda británica de rock progresivo, conocida por sus álbumes conceptuales y sus innovaciones en el estudio.",
-    },
-    {
-      id: 1,
-      nombre: "Pink Floyd",
-      imagen: "https://api-musica.netlify.app/media/pink-floyd.jpeg",
-      info: "Reino Unido 1965",
-      descripcion:
-        "Banda británica de rock progresivo, conocida por sus álbumes conceptuales y sus innovaciones en el estudio.",
-    },
-    {
-      id: 1,
-      nombre: "Pink Floyd",
-      imagen: "https://api-musica.netlify.app/media/pink-floyd.jpeg",
-      info: "Reino Unido 1965",
-      descripcion:
-        "Banda británica de rock progresivo, conocida por sus álbumes conceptuales y sus innovaciones en el estudio.",
-    },
-    {
-      id: 1,
-      nombre: "Pink Floyd",
-      imagen: "https://api-musica.netlify.app/media/pink-floyd.jpeg",
-      info: "Reino Unido 1965",
-      descripcion:
-        "Banda británica de rock progresivo, conocida por sus álbumes conceptuales y sus innovaciones en el estudio.",
-    },
-    {
-      id: 1,
-      nombre: "Pink Floyd",
-      imagen: "https://api-musica.netlify.app/media/pink-floyd.jpeg",
-      info: "Reino Unido 1965",
-      descripcion:
-        "Banda británica de rock progresivo, conocida por sus álbumes conceptuales y sus innovaciones en el estudio.",
-    },
-    {
-      id: 1,
-      nombre: "Pink Floyd",
-      imagen: "https://api-musica.netlify.app/media/pink-floyd.jpeg",
-      info: "Reino Unido 1965",
-      descripcion:
-        "Banda británica de rock progresivo, conocida por sus álbumes conceptuales y sus innovaciones en el estudio.",
-    },
-    {
-      id: 1,
-      nombre: "Pink Floyd",
-      imagen: "https://api-musica.netlify.app/media/pink-floyd.jpeg",
-      info: "Reino Unido 1965",
-      descripcion:
-        "Banda británica de rock progresivo, conocida por sus álbumes conceptuales y sus innovaciones en el estudio.",
-    },
-    {
-      id: 1,
-      nombre: "Pink Floyd",
-      imagen: "https://api-musica.netlify.app/media/pink-floyd.jpeg",
-      info: "Reino Unido 1965",
-      descripcion:
-        "Banda británica de rock progresivo, conocida por sus álbumes conceptuales y sus innovaciones en el estudio.",
-    },
-    {
-      id: 1,
-      nombre: "Pink Floyd",
-      imagen: "https://api-musica.netlify.app/media/pink-floyd.jpeg",
-      info: "Reino Unido 1965",
-      descripcion:
-        "Banda británica de rock progresivo, conocida por sus álbumes conceptuales y sus innovaciones en el estudio.",
-    },
-    {
-      id: 1,
-      nombre: "Pink Floyd",
-      imagen: "https://api-musica.netlify.app/media/pink-floyd.jpeg",
-      info: "Reino Unido 1965",
-      descripcion:
-        "Banda británica de rock progresivo, conocida por sus álbumes conceptuales y sus innovaciones en el estudio.",
-    },
-    {
-      id: 1,
-      nombre: "Pink Floyd",
-      imagen: "https://api-musica.netlify.app/media/pink-floyd.jpeg",
-      info: "Reino Unido 1965",
-      descripcion:
-        "Banda británica de rock progresivo, conocida por sus álbumes conceptuales y sus innovaciones en el estudio.",
-    },
-  ];
+  const [artistas, Setartistas] = useState([]);
+
+  useEffect(() => {
+    const GetArtistas = async () => {
+      const datosartistas = await GetAllArtistas();
+      Setartistas(datosartistas);
+    };
+    GetArtistas();
+  }, []);
+
   return (
     <div className="artistas-container">
       <div className="lista-artistas">
-        {artistasEjemplo.map(({ id, nombre, imagen, info }) => (
-          <div key={id} className="artista-card">
-            <img src={imagen} alt={nombre} className="artista-imagen" />
-            <div className="artista-info">
-              <div className="artista-nombre">{nombre}</div>
-              <div className="artista-detalle">{info}</div>
+        {artistas.map(
+          ({
+            id,
+            nombre,
+            nacionalidad,
+            genero,
+            añoFormacion,
+            biografia,
+            imagen,
+          }) => (
+            <div key={id} className="artista-card">
+              <img
+                src={`${URL()}/${imagen}`}
+                alt={nombre}
+                className="artista-imagen"
+              />
+              <div className="artista-info">
+                <div className="artista-nombre">{nombre}</div>
+                <div className="artista-detalle">
+                  {nacionalidad}•{añoFormacion}
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          )
+        )}
       </div>
     </div>
   );

@@ -3,6 +3,7 @@
   background: #181818;
   color: white;
   font-family: Arial, sans-serif;
+  min-height: 100vh;
 }
 
 h2 {

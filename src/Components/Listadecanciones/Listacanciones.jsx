@@ -33,8 +33,8 @@ function Listacanciones({
 
         <div className="cancioheder">
           <div className="artistacacancion">
-          <p className="nombreCancion">{canciontitulo}</p>
-          <p className="nombreartista">{nombre}</p>
+            <p className="nombreCancion">{canciontitulo}</p>
+            <p className="nombreartista">{nombre}</p>
           </div>
           <div className="listaspan">
             <span className="salida">{añoSalida}</span>
