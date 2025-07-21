@@ -52,7 +52,7 @@
 .navegacion {
   grid-column: 2;
   grid-row: 2;
-  background-color: rgb(50, 50, 50);
+  background-color: #181818;
   overflow-y: scroll;
   overflow-x: hidden;
 }

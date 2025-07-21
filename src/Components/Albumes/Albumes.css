@@ -3,11 +3,11 @@
   grid-template-columns: 1fr 1fr;
   gap: 24px;
   padding: 2rem;
-  background-color: #1a1a1a;
+  background-color: #181818;
 }
 
 .album-card {
-  background-color: #2b2b2b;
+  background-color: #282828;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);

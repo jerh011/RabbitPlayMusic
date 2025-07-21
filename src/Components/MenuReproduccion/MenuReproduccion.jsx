@@ -19,9 +19,9 @@ function MenuReproduccion() {
         const cancionesData = await GetallSong();
         setCanciones(cancionesData);
         setCancionEs(cancionesData);
-        timeout = setTimeout(() => {
+        if (cancionesData.length > 0) {
           setLoading(false);
-        }, 500);
+        }
       } catch (error) {
         console.error("Error cargando canciones:", error);
         setLoading(false);

@@ -1,11 +1,12 @@
 import "./ListadoCanciones.css";
-export default function listadoCanciones({ canciones, datos }) {
+export default function listadoCanciones({ canciones, album }) {
+  album = album ? album : false;
   return (
     <>
       <div className="song-list-header">
         <div>#</div>
         <div>Título</div>
-        <div>Álbum</div>
+        {album ? <div>Álbum</div> : null}
         <div>Año</div>
         <div>Duración</div>
       </div>
@@ -13,7 +14,7 @@ export default function listadoCanciones({ canciones, datos }) {
         <div className="song-row">
           <div>{cancion.pista}</div>
           <div>{cancion.titulo}</div>
-          <div>{datos.titulo}</div>
+          {album ? <div>{album}</div> : null}
           <div>{cancion.año}</div>
           <div>{cancion.duracion}</div>
         </div>
@@ -21,4 +22,3 @@ export default function listadoCanciones({ canciones, datos }) {
     </>
   );
 }
-2;

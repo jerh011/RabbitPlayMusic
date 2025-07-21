@@ -2,17 +2,36 @@ import "./Artistas.css";
 import GetAllArtistas from "../../Services/GetAllArtistas";
 import { useEffect, useState } from "react";
 import URL from "../../Services/URL";
+import { useNavigate } from "react-router-dom";
+import Carga from "../Cargacanciones/Carga";
+
 function Artistas() {
   const [artistas, Setartistas] = useState([]);
-
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const GetArtistas = async () => {
-      const datosartistas = await GetAllArtistas();
-      Setartistas(datosartistas);
-    };
-    GetArtistas();
+    try {
+      const GetArtistas = async () => {
+        const datosartistas = await GetAllArtistas();
+        Setartistas(datosartistas);
+
+        if (datosartistas !== null && datosartistas.length > 0) {
+          setLoading(false);
+        }
+      };
+      GetArtistas();
+    } catch (error) {
+      console.error("Error cargando artistas:", error);
+      //pagina de error
+    }
   }, []);
 
+  const selectArtista = (id) => {
+    navigate(`/Inicio/Artista/${id}`);
+  };
+  if (loading) {
+    return <Carga />;
+  }
   return (
     <div className="artistas-container">
       <div className="lista-artistas">
@@ -26,7 +45,11 @@ function Artistas() {
             biografia,
             imagen,
           }) => (
-            <div key={id} className="artista-card">
+            <div
+              key={id}
+              className="artista-card"
+              onClick={() => selectArtista(id)}
+            >
               <img
                 src={`${URL()}/${imagen}`}
                 alt={nombre}

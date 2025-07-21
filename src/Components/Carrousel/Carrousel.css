@@ -1,0 +1,64 @@
+.carrousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carrousel-window {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carrousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carrousel-album-card {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 10px;
+  background-color: #111;
+  color: white;
+}
+
+.carrousel-album-cover {
+  width: 80%;
+  max-width: 500px;
+  max-height: 250px; /* <<< Limita la altura */
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover; /* Opcional: evita deformaciones si la imagen no es cuadrada */
+}
+
+.carrousel-album-info {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.carrousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  font-size: 30px;
+  padding: 5px 10px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.carrousel-nav-btn.left {
+  left: 10px;
+}
+
+.carrousel-nav-btn.right {
+  right: 10px;
+}
+
+.carrousel-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}

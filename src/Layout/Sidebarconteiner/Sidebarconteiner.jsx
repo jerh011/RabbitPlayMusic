@@ -20,9 +20,9 @@ function Sidebarconteiner({ cerrarSidebar }) {
     LoadGenero();
   }, []);
 
-  const filtrarGenero = (nombre) => {
-    alert(nombre);
-    if (cerrarSidebar) cerrarSidebar(); // cerrar menú si se proporcionó la función
+  const filtrarGenero = (genero) => {
+    navigate(`/Inicio/Genero/${genero}`);
+    //if (cerrarSidebar) cerrarSidebar(); // cerrar menú si se proporcionó la función
   };
 
   const navegarYcerrar = (ruta) => {
@@ -51,6 +51,12 @@ function Sidebarconteiner({ cerrarSidebar }) {
         >
           Artistas
         </button>
+        <button
+          className="boton-navegacion"
+          onClick={() => navegarYcerrar("/Inicio/Favoritos")}
+        >
+          Favoritos
+        </button>
       </div>
 
       <div className="generos">
@@ -68,13 +74,13 @@ function Sidebarconteiner({ cerrarSidebar }) {
           id="lista-generos"
           className={`lista-generos ${abierto ? "abierto" : "cerrado"}`}
         >
-          {generos.map((nombre, index) => (
+          {generos.map((genero, index) => (
             <li key={index}>
               <button
                 className="boton-navegacion"
-                onClick={() => filtrarGenero(nombre)}
+                onClick={() => filtrarGenero(genero)}
               >
-                {nombre}
+                {genero}
               </button>
             </li>
           ))}

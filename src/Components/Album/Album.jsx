@@ -32,8 +32,13 @@ function Album() {
 
   return (
     <div className="album-page ">
-      <HeaderInfo datos={datos} />
-      <ListadoCanciones canciones={canciones} datos={datos} />
+      <HeaderInfo
+        imagen={datos.portada}
+        titulo={datos.titulo}
+        añoLanzamiento={datos.añoLanzamiento}
+        nombre={datos.artista.nombre}
+      />
+      <ListadoCanciones canciones={canciones} album={datos.titulo} />
     </div>
   );
 }

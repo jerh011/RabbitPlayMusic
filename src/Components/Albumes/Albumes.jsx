@@ -10,26 +10,20 @@ export default function Albumes() {
   const [loading, setLoading] = useState([]);
 
   useEffect(() => {
-    let timeout;
-
     try {
       const AllAlbumes = async () => {
         setLoading(true);
         const datos = await GetAllAlbumes();
         Setalbumes(datos);
+        if (datos.length > 0 && datos !== null) {
+          setLoading(false);
+        }
       };
 
-      timeout = setTimeout(() => {
-        setLoading(false);
-      }, 1500);
       AllAlbumes();
     } catch (error) {
       console.error("Error cargando canciones:", error);
-      setLoading(false);
     }
-    return () => {
-      clearTimeout(timeout);
-    };
   }, []);
 
   const selectAlbum = (id) => {
