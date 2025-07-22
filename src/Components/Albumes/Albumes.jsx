@@ -1,5 +1,5 @@
 import "./Albumes.css";
-import URL from "../../Services/URL";
+import URL from "../../Services/URL.js";
 import { useState, useEffect } from "react";
 import GetAllAlbumes from "../../Services/GetAllAlbumes";
 import { useNavigate } from "react-router-dom";
