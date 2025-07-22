@@ -8,7 +8,6 @@ import Artistas from "./Components/Artistas/Artistas";
 import Artista from "./Components/Artista/Artista";
 import Genero from "./Components/GeneroCanciones/GeneroCanciones";
 import FavoritosC from "./Components/FavoritosC/FavoritosC";
-import "./app.css";
 import Busqueda from "./Components/Busqueda/Busqueda";
 import Error from "./Components/Erorr/Error";
 function App() {
