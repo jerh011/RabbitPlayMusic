@@ -6,11 +6,11 @@ import Siguiente from "../../assets/resource/icon/barradereproduccion/siguiente.
 import Regreso from "../../assets/resource/icon/barradereproduccion/regreso.png";
 import Regresowhite from "../../assets/resource/icon/barradereproduccion/regreso-white.png";
 import Barajar from "../../assets/resource/icon/barradereproduccion/barajar.png";
-import VolumenImage from "../../assets/resource/icon/barradereproduccion/volumen.png"; // <-- Asegúrate de importar este ícono
+import VolumenImage from "../../assets/resource/icon/barradereproduccion/volumen.png";
 import imagen1 from "../../assets/resource/icon/imagenesdeprueba/imagen1.webp";
 import URL from "../../Services/URL";
 import GetCancionById from "../../Services/GetCancionById";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function BarraReproduccion({
   cancionElegida,
@@ -24,13 +24,21 @@ function BarraReproduccion({
   const [cancion, setCancion] = useState(null);
   const [playpause, setPlayPause] = useState(false);
   const [replay, SetReplay] = useState(false);
+  const [duracionTotal, setDuracionTotal] = useState(0);
+  const intervaloRef = useRef(null);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setPlayPause(false); // Siempre pausar cuando cambia la canción
+        setPlayPause(true);
         const data = await GetCancionById(cancionElegida);
         setCancion(data);
         setProgreso(0);
+
+        if (data?.duracion && typeof data.duracion === "string") {
+          const [min, seg] = data.duracion.split(":").map(Number);
+          setDuracionTotal(min * 60 + seg);
+        }
       } catch (error) {
         console.error("Error al cargar canción:", error);
       }
@@ -41,26 +49,43 @@ function BarraReproduccion({
     }
   }, [cancionElegida]);
 
+  // Manejo del cronómetro automático
+  useEffect(() => {
+    if (playpause) {
+      intervaloRef.current = setInterval(() => {
+        setProgreso((prev) => {
+          if (prev < duracionTotal) {
+            return prev + 1;
+          } else {
+            clearInterval(intervaloRef.current);
+            onSiguiente();
+            return duracionTotal;
+          }
+        });
+      }, 1000);
+    } else {
+      clearInterval(intervaloRef.current);
+    }
+
+    return () => clearInterval(intervaloRef.current);
+  }, [playpause, duracionTotal]);
+
   const handleProgreso = (e) => setProgreso(Number(e.target.value));
   const handleVolumen = (e) => setVolumen(Number(e.target.value));
-  const togglePlayPause = () =>
-    setPlayPause((prev) => (prev === true ? false : true));
+  const togglePlayPause = () => setPlayPause((prev) => !prev);
 
-  const formatoDuracion = (duracion) => {
-    if (!duracion) return "0:00";
-    if (typeof duracion === "string" && duracion.includes(":")) return duracion;
-
-    const segundos = Number(duracion);
-    if (isNaN(segundos)) return "0:00";
-
+  const formatoDuracion = (segundos) => {
+    if (isNaN(segundos) || segundos < 0) return "0:00";
     const min = Math.floor(segundos / 60);
-    const seg = segundos % 60;
+    const seg = Math.floor(segundos % 60);
     return `${min}:${seg < 10 ? "0" : ""}${seg}`;
   };
+
   const onRepetir = () => {
     SetReplay(!replay);
     setRepetir(!replay);
   };
+
   return (
     <>
       <div className="barradeArriba">
@@ -100,27 +125,32 @@ function BarraReproduccion({
                 <img src={Retroseso} alt="botón anterior" />
               </button>
               <button
-                id={playpause === true ? "playbutton" : "pausebutton"}
+                id={playpause ? "playbutton" : "pausebutton"}
                 className="playpausebutton"
                 onClick={togglePlayPause}
-                aria-label={playpause === true ? "Reproducir" : "Pausar"}
+                aria-label={playpause ? "Reproducir" : "Pausar"}
               >
                 <img
-                  src={playpause === true ? Play : Pause}
+                  src={!playpause ? Play : Pause}
                   alt="botón de play/pausa"
                 />
               </button>
-              <button className="botonessecundarios" onClick={onSiguiente}>
+              <button
+                className="botonessecundarios"
+                onClick={onSiguiente}
+                aria-label="Siguiente"
+              >
                 <img src={Siguiente} alt="botón siguiente" />
               </button>
               <button
                 className="botonessecundarios"
-                onClick={() => onRepetir()}
+                onClick={onRepetir}
+                aria-label="Repetir"
               >
                 <img
-                  src={replay === true ? Regresowhite : Regreso}
-                  className={replay === true ? "Regresowhite" : "Regreso"}
-                  alt="botón regreso"
+                  src={replay ? Regresowhite : Regreso}
+                  className={replay ? "Regresowhite" : "Regreso"}
+                  alt="botón repetir"
                 />
               </button>
             </div>
@@ -145,21 +175,17 @@ function BarraReproduccion({
 
       <div className="barradeAbajo">
         <div className="barra-progreso">
-          <span className="barraactual">00:00</span>
+          <span className="barraactual">{formatoDuracion(progreso)}</span>
           <input
             type="range"
             className="barra"
             value={progreso}
             min={0}
-            max={cancion?.duracionSegundos || 0} // asumiendo duración en segundos
+            max={duracionTotal}
             onChange={handleProgreso}
             aria-label="Control de progreso"
           />
-          <span className="tiemporeproduccion"></span>
-          <span className="barraactual">
-            {formatoDuracion(cancion?.duracion)}
-          </span>
-          <span id="spanTimepototal" className="tiempototal"></span>
+          <span className="barraactual">{formatoDuracion(duracionTotal)}</span>
         </div>
       </div>
     </>
