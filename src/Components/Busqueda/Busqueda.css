@@ -1,0 +1,21 @@
+.canciones {
+  background: linear-gradient(to bottom, #4b0082, #1a1a1a);
+  color: white;
+  padding: 40px;
+  font-family: "Helvetica Neue", sans-serif;
+  min-height: 100vh;
+}
+
+.GeneroCanciones {
+  background: #181818;
+  color: white;
+  font-family: "Helvetica Neue", sans-serif;
+  padding: 20px 0;
+  margin: 0;
+}
+.GeneroCanciones h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}

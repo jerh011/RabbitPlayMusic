@@ -1,17 +1,25 @@
 import { useState, useEffect } from "react";
 import HeaderInfo from "../HeaderInfo/HeaderInfo";
 import "./Artista.css";
-import { useParams } from "react-router-dom";
+import { useParams, useOutletContext } from "react-router-dom";
 import Carga from "../Cargacanciones/Carga";
 import GetArtistaById from "../../Services/GetArtistaById";
-import ListadoCanciones from "../ListadoCancioones/ListadoCanciones";
+import ListadoCanciones from "../ListadoCanciones/ListadoCanciones";
 
 export default function Artista() {
   const [loading, setLoading] = useState(true);
   const [canciones, Setcanciones] = useState([]);
   const [datos, SetDatos] = useState(null);
-
   const { Id } = useParams();
+
+  const {
+    setCancionElegida,
+    setCancionEs,
+    cancionreproduccion,
+    AgregarCancionFavorita,
+    Favoritos,
+  } = useOutletContext();
+
   useEffect(() => {
     const cargarAlbum = async () => {
       try {
@@ -28,20 +36,40 @@ export default function Artista() {
     cargarAlbum();
   }, [Id]);
 
+  const onPlay = () => {
+    if (canciones.length > 0) {
+      setCancionElegida(canciones[0].id);
+      setCancionEs(canciones);
+    }
+  };
+
+  const onCancionSeleccionada = (id) => {
+    setCancionElegida(id);
+    setCancionEs(canciones);
+  };
   if (loading || (canciones == null && datos == null)) {
     return <Carga />;
   }
 
   return (
-    <div className="artista-page">
+    <>
       <HeaderInfo
         imagen={datos.imagen}
         titulo={datos.nombre}
         añoLanzamiento={datos.añoFormacion}
         nombre={datos.nombre}
+        etiqueta={"Artista"}
+        onPlay={onPlay}
       />
-
-      <ListadoCanciones canciones={canciones} datos={datos} />
-    </div>
+      <div className="artista-page">
+        <ListadoCanciones
+          canciones={canciones}
+          activa={cancionreproduccion}
+          onCancionSeleccionada={onCancionSeleccionada}
+          Favoritos={Favoritos}
+          AgregarCancionFavorita={AgregarCancionFavorita}
+        />
+      </div>
+    </>
   );
 }

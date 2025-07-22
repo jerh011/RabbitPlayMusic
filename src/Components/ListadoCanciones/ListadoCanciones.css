@@ -1,0 +1,45 @@
+.song-list-header.album,
+.song-row.album {
+  grid-template-columns: 55px 2fr 2fr 1fr 60px;
+}
+
+.song-list-header.no-album,
+.song-row.no-album {
+  grid-template-columns: 50px 2fr 1fr 1fr;
+}
+
+.song-list-header,
+.song-row {
+  display: grid;
+  gap: 10px;
+  padding: 10px 0;
+  align-items: center;
+}
+
+.song-list-header {
+  font-weight: bold;
+  color: #b3b3b3;
+  border-bottom: 1px solid #0c0000;
+}
+
+.song-row:hover,
+.song-row.active {
+  background-color: rgba(40, 40, 40, 0.8);
+  cursor: pointer;
+}
+
+.fav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favoritos-listado :hover {
+  transform: scale(1.1);
+}
+.favoritos-listado {
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}

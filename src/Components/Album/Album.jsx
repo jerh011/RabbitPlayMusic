@@ -2,20 +2,28 @@ import Carga from "../Cargacanciones/Carga";
 import "./Album.css";
 import { useEffect, useState } from "react";
 import GetAlbumById from "../../Services/GetAlbumById";
-import { useParams } from "react-router-dom";
-import ListadoCanciones from "../ListadoCancioones/ListadoCanciones";
+import { useParams, useOutletContext } from "react-router-dom";
+import ListadoCanciones from "../ListadoCanciones/ListadoCanciones";
 import HeaderInfo from "../HeaderInfo/HeaderInfo";
+
 function Album() {
   const [loading, setLoading] = useState(true);
-  const [canciones, Setcanciones] = useState([]);
-  const [datos, SetDatos] = useState(null);
+  const [canciones, setCanciones] = useState([]);
+  const [datos, setDatos] = useState(null);
   const { Id } = useParams();
+  const {
+    setCancionElegida,
+    setCancionEs,
+    cancionreproduccion,
+    AgregarCancionFavorita,
+    Favoritos,
+  } = useOutletContext();
   useEffect(() => {
     const cargarAlbum = async () => {
       try {
         const album = await GetAlbumById(Id);
-        SetDatos(album.data);
-        Setcanciones(album.data.canciones);
+        setDatos(album.data);
+        setCanciones(album.data.canciones);
       } catch (error) {
         console.error("Error cargando álbum:", error);
       } finally {
@@ -26,20 +34,43 @@ function Album() {
     cargarAlbum();
   }, [Id]);
 
-  if (loading || (canciones == null && datos == null)) {
+  const onPlay = () => {
+    if (canciones.length > 0) {
+      setCancionElegida(canciones[0].id);
+      setCancionEs(canciones);
+    }
+  };
+
+  const onCancionSeleccionada = (id) => {
+    setCancionElegida(id);
+    setCancionEs(canciones);
+  };
+
+  if (loading || !datos || !canciones) {
     return <Carga />;
   }
 
   return (
-    <div className="album-page ">
+    <>
       <HeaderInfo
         imagen={datos.portada}
         titulo={datos.titulo}
         añoLanzamiento={datos.añoLanzamiento}
         nombre={datos.artista.nombre}
+        etiqueta="Álbum"
+        onPlay={onPlay}
       />
-      <ListadoCanciones canciones={canciones} album={datos.titulo} />
-    </div>
+      <div className="album-page">
+        <ListadoCanciones
+          canciones={canciones}
+          activa={cancionreproduccion}
+          onCancionSeleccionada={onCancionSeleccionada}
+          album={datos.titulo}
+          Favoritos={Favoritos}
+          AgregarCancionFavorita={AgregarCancionFavorita}
+        />
+      </div>
+    </>
   );
 }
 

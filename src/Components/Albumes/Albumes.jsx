@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import GetAllAlbumes from "../../Services/GetAllAlbumes";
 import { useNavigate } from "react-router-dom";
 import Carga from "../Cargacanciones/Carga";
+import { useOutletContext } from "react-router-dom";
 export default function Albumes() {
   const navigate = useNavigate();
   const [albumes, Setalbumes] = useState([]);

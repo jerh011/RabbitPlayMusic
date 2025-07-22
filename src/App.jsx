@@ -6,10 +6,11 @@ import Album from "./Components/Album/Album";
 import Albumes from "./Components/Albumes/Albumes";
 import Artistas from "./Components/Artistas/Artistas";
 import Artista from "./Components/Artista/Artista";
-import Genero from "./Components/GeneroCancioones/GeneroCanciones";
-import Favoritos from "./Components/Favoritos/Favoritos";
+import Genero from "./Components/GeneroCanciones/GeneroCanciones";
+import FavoritosC from "./Components/FavoritosC/FavoritosC";
 import "./app.css";
-
+import Busqueda from "./Components/Busqueda/Busqueda";
+import Error from "./Components/Erorr/Error";
 function App() {
   return (
     <Routes>
@@ -21,8 +22,10 @@ function App() {
         <Route path="Artistas" element={<Artistas />} />
         <Route path="Artista/:Id" element={<Artista />} />
         <Route path="Genero/:Genero" element={<Genero />} />
-        <Route path="Favoritos" element={<Favoritos />} />
+        <Route path="Favoritos" element={<FavoritosC />} />
+        <Route path="Buscar" element={<Busqueda />} />
       </Route>
+      <Route path="*" element={<Error />} />
     </Routes>
   );
 }

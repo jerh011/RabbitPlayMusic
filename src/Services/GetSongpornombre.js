@@ -1,17 +1,13 @@
 import URL from "./URL";
 
-const GetSongpornombre = async (nombre) => {
-  try {
-    const response = await fetch(
-      `${URL()}/api/canciones?q=${nombre}`
-    );
-    const data = await response.json();
- 
-    return data.data.canciones;
-  } catch (error) {
-    console.error("Error al buscar la canción:", error);
-    return null;
-  }
+const GetSongpornombre = (nombre) => {
+  return fetch(`${URL()}/api/canciones?q=${nombre}`)
+    .then((response) => response.json())
+    .then((data) => data.data) // Ajusta si `data` no tiene un campo `.data`
+    .catch((error) => {
+      console.error("Error al obtener canciones:", error);
+      return null;
+    });
 };
 
 export default GetSongpornombre;

@@ -1,0 +1,36 @@
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #1f1f1f;
+  color: #e57373;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+  max-width: 500px;
+  margin: 50px auto;
+}
+
+.error-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+  fill: #e57373;
+}
+
+.error-container h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.error-container p {
+  font-size: 16px;
+  color: #ffbdbd;
+  margin-top: 10px;
+}
+.error-icon {
+  font-size: 50px;
+  margin-bottom: 15px;
+}

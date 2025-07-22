@@ -1,32 +1,25 @@
 import "./Barrabusqueda.css";
 import lupa from "../../assets/resource/icon/busquedalista/buscar.png";
 import { useState } from "react";
-import GetSongpornombre from "../../Services/GetSongpornombre.js";
+import { useNavigate } from "react-router-dom";
 
 function Barrabusqueda() {
   const [nombre, setNombre] = useState("");
+  const navigate = useNavigate();
 
-  const Inputbuscar = (e) => {
+  const handleInputChange = (e) => {
     setNombre(e.target.value);
   };
 
-  const BuscarBoton = async () => {
-    if (nombre.trim() === "") {
-      setcancionnombre([]);
-      return;
-    }
-
-    try {
-      const busqueda = await GetSongpornombre(nombre);
-      setcancionnombre(busqueda);
-    } catch (error) {
-      console.error(error);
+  const handleSearch = () => {
+    if (nombre.trim() !== "") {
+      navigate(`/Inicio/Buscar?q=${encodeURIComponent(nombre)}`);
     }
   };
 
   const manejarTecla = (event) => {
     if (event.key === "Enter") {
-      BuscarBoton();
+      handleSearch();
     }
   };
 
@@ -38,10 +31,10 @@ function Barrabusqueda() {
         placeholder="Buscar canciones"
         className="BuscarCanciones"
         value={nombre}
-        onChange={Inputbuscar}
+        onChange={handleInputChange}
         onKeyDown={manejarTecla}
       />
-      <button onClick={BuscarBoton}>
+      <button onClick={handleSearch}>
         <img src={lupa} alt="BUSCAR" />
       </button>
     </div>

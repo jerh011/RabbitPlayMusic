@@ -1,6 +1,10 @@
 import { Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./MainPage.css";
+import {
+  AgregarFavoritosEnLocalStorage,
+  ObtenerFavoritosDeLocalStorage,
+} from "../Services/LocalStoragefavoritos.js";
 
 import Sidebarheader from "../Layout/Sidebarheader/Sidebarheader";
 import Sidebarconteiner from "../Layout/Sidebarconteiner/Sidebarconteiner";
@@ -9,24 +13,56 @@ import BarraReproduccion from "../Layout/BarraReproducction/BarraReproduccion";
 
 function MainLayout() {
   const [cancionES, setCancionEs] = useState([]);
-  const [indiceActual, setIndiceActual] = useState(0);
+  const [cancionElegida, setCancionElegida] = useState(null);
   const [repetir, setRepetir] = useState(false);
-  const [sidebarAbierto, setSidebarAbierto] = useState(false); // Estado para abrir/cerrar el sidebar móvil
-
-  const cancionElegida = cancionES[indiceActual]?.id || null;
+  const [sidebarAbierto, setSidebarAbierto] = useState(false);
+  const [Favoritos, setFavoritos] = useState(
+    () => ObtenerFavoritosDeLocalStorage() || []
+  );
 
   const cambiarCancion = (direccion) => {
-    setIndiceActual((prev) => {
-      const nuevoIndice = prev + direccion;
-      if ((nuevoIndice < 0 || nuevoIndice >= cancionES.length) && repetir)
-        return 0;
-      return nuevoIndice;
-    });
+    const index = cancionES.findIndex((c) => c.id === cancionElegida);
+    let nuevoIndex = index + direccion;
+
+    if (nuevoIndex < 0 || nuevoIndex >= cancionES.length) {
+      if (repetir) {
+        nuevoIndex = 0;
+      } else {
+        return;
+      }
+    }
+
+    setCancionElegida(cancionES[nuevoIndex].id);
   };
 
+  const AgregarCancionFavorita = (cancion) => {
+    const yaEsFavorita = Favoritos.some((fav) => fav.id === cancion.id);
+
+    if (!yaEsFavorita) {
+      const nuevosFavoritos = [...Favoritos, cancion];
+      setFavoritos(nuevosFavoritos);
+      AgregarFavoritosEnLocalStorage(nuevosFavoritos);
+    } else {
+      const nuevosFavoritos = Favoritos.filter((fav) => fav.id !== cancion.id);
+      setFavoritos(nuevosFavoritos);
+      EliminarFavoritosEnLocalStorage(cancion.id); // aquí se usa
+    }
+  };
+
+  // Si aún no hay canción elegida, toma la primera
   useEffect(() => {
     if (cancionES.length > 0 && cancionElegida === null) {
-      setIndiceActual(0);
+      setCancionElegida(cancionES[0].id);
+    }
+  }, [cancionES]);
+
+  // Verifica si la canción activa aún existe en la nueva lista
+  useEffect(() => {
+    if (cancionES.length === 0) return;
+
+    const existe = cancionES.some((c) => c.id === cancionElegida);
+    if (!existe) {
+      setCancionElegida(cancionES[0].id);
     }
   }, [cancionES]);
 
@@ -63,14 +99,11 @@ function MainLayout() {
       <div className="navegacion">
         <Outlet
           context={{
-            setCancionElegida: (id) => {
-              const index = cancionES.findIndex(
-                (idcancion) => idcancion.id === id
-              );
-              if (index !== -1) setIndiceActual(index);
-            },
+            setCancionElegida,
             setCancionEs,
             cancionreproduccion: cancionElegida,
+            AgregarCancionFavorita,
+            Favoritos,
           }}
         />
       </div>
