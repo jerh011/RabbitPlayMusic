@@ -9,7 +9,7 @@ import Barajar from "../../assets/resource/icon/barradereproduccion/barajar.png"
 import VolumenImage from "../../assets/resource/icon/barradereproduccion/volumen.png";
 import imagen1 from "../../assets/resource/icon/imagenesdeprueba/imagen1.webp";
 import URL from "../../Services/URL";
-import GetCancionById from "../../Services/GetCancionById";
+import GetCancionById from "../../Services/GetCancionById.js";
 import { useState, useEffect, useRef } from "react";
 import audio from "../../assets/aud/audio.mp3";
 

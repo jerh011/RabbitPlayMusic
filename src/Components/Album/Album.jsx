@@ -1,7 +1,7 @@
 import Carga from "../Cargacanciones/Carga";
 import "./Album.css";
 import { useEffect, useState } from "react";
-import GetAlbumById from "../../Services/GetAlbumById";
+import GetAlbumById from "../../Services/GetAlbumById.js";
 import { useParams, useOutletContext } from "react-router-dom";
 import ListadoCanciones from "../ListadoCanciones/ListadoCanciones";
 import HeaderInfo from "../HeaderInfo/HeaderInfo";

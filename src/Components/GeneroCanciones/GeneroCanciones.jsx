@@ -1,8 +1,8 @@
 // Genero.jsx
 import { useParams, useNavigate } from "react-router-dom";
-import GetallAlbumes from "../../Services/GetAllAlbumes";
-import GetallSongs from "../../Services/GetallSong";
-import GetallArtistas from "../../Services/GetAllArtistas";
+import GetallAlbumes from "../../Services/GetAllAlbumes.js";
+import GetallSongs from "../../Services/GetallSong.js";
+import GetallArtistas from "../../Services/GetAllArtistas.js";
 import { useEffect, useState } from "react";
 import Carrousel from "../Carrousel/Carrousel";
 import Carga from "../Cargacanciones/Carga";
@@ -16,7 +16,6 @@ export default function Genero() {
   const [canciones, setCanciones] = useState([]);
   const [artistas, setArtistas] = useState([]);
 
-  const [mostrarArtistas, setMostrarArtistas] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const { Genero } = useParams();

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import GetallGenero from "../../Services/GetallGenero";
+import GetallGenero from "../../Services/GetallGenero.js";
 import { useNavigate } from "react-router-dom";
 import "./Sidebarconteiner.css";
 

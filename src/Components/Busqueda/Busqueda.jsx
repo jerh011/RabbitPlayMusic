@@ -1,6 +1,6 @@
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import GetSongpornombre from "../../Services/GetSongpornombre";
+import GetSongpornombre from "../../Services/GetSongpornombre.js";
 import { useOutletContext } from "react-router-dom";
 import "./Busqueda.css";
 import HeaderInfo from "../HeaderInfo/HeaderInfo";

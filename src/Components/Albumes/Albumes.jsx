@@ -1,7 +1,7 @@
 import "./Albumes.css";
-import URL from "../../Services/URL.js";
+import URL from "../../Services/URL";
 import { useState, useEffect } from "react";
-import GetAllAlbumes from "../../Services/GetAllAlbumes";
+import GetAllAlbumes from "../../Services/GetAllAlbumes.js";
 import { useNavigate } from "react-router-dom";
 import Carga from "../Cargacanciones/Carga";
 import { useOutletContext } from "react-router-dom";

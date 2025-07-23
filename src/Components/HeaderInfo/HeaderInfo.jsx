@@ -1,4 +1,4 @@
-import URL from "../../Services/URL";
+import URL from "../../Services/URL.js";
 import ImagenDefecto from "../../assets/resource/icon/imagenesdeprueba/imagen1.webp";
 import "./HeaderInfo.css";
 

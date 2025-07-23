@@ -1,7 +1,7 @@
 import "./MenuReproduccion.css";
 import ListadocancionesGid from "../ListadocancionesGid/ListadoGid";
 import { useState, useEffect } from "react";
-import GetallSong from "../../Services/GetallSong";
+import GetallSong from "../../Services/GetallSong.js";
 import Carga from "../Cargacanciones/Carga";
 import { useOutletContext } from "react-router-dom";
 import HeaderInfo from "../HeaderInfo/HeaderInfo";

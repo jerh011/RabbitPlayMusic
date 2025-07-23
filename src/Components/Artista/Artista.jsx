@@ -3,7 +3,7 @@ import HeaderInfo from "../HeaderInfo/HeaderInfo";
 import "./Artista.css";
 import { useParams, useOutletContext } from "react-router-dom";
 import Carga from "../Cargacanciones/Carga";
-import GetArtistaById from "../../Services/GetArtistaById";
+import GetArtistaById from "../../Services/GetArtistaById.js";
 import ListadoCanciones from "../ListadoCanciones/ListadoCanciones";
 
 export default function Artista() {
