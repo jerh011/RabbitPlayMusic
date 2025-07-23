@@ -39,7 +39,7 @@ function BarraReproduccion({
         if (audioRef.current) {
           audioRef.current.currentTime = 0;
           audioRef.current.volume = volumen / 100;
-          audioRef.current.play().catch(() => {});
+          await audioRef.current.play().catch(() => {});
         }
 
         if (data?.duracion && typeof data.duracion === "string") {
@@ -97,7 +97,7 @@ function BarraReproduccion({
   };
 
   const handleEnded = () => {
-    if (replay) {
+    if (replay && audioRef.current) {
       audioRef.current.currentTime = 0;
       audioRef.current.play();
     } else {
@@ -157,23 +157,35 @@ function BarraReproduccion({
               <button className="botonessecundarios" aria-label="Barajar">
                 <img src={Barajar} alt="botón barajar" />
               </button>
-              <button className="botonessecundarios" onClick={onAnterior}>
+              <button
+                className="botonessecundarios"
+                onClick={onAnterior}
+                aria-label="Anterior"
+              >
                 <img src={Retroseso} alt="botón anterior" />
               </button>
               <button
-                id={playpause ? "playbutton" : "pausebutton"}
                 className="playpausebutton"
                 onClick={togglePlayPause}
+                aria-label="Play/Pausa"
               >
                 <img
                   src={!playpause ? Play : Pause}
                   alt="botón de play/pausa"
                 />
               </button>
-              <button className="botonessecundarios" onClick={onSiguiente}>
+              <button
+                className="botonessecundarios"
+                onClick={onSiguiente}
+                aria-label="Siguiente"
+              >
                 <img src={Siguiente} alt="botón siguiente" />
               </button>
-              <button className="botonessecundarios" onClick={onRepetir}>
+              <button
+                className="botonessecundarios"
+                onClick={onRepetir}
+                aria-label="Repetir"
+              >
                 <img
                   src={replay ? Regresowhite : Regreso}
                   className={replay ? "Regresowhite" : "Regreso"}
@@ -189,11 +201,14 @@ function BarraReproduccion({
             <img src={VolumenImage} alt="Icono volumen" />
             <input
               type="range"
-              className="barra"
+              className="barra barra-volumen"
               value={volumen}
               min={0}
               max={100}
               onChange={handleVolumen}
+              style={{
+                background: `linear-gradient(to right, #0099ff ${volumen}%, #ccc ${volumen}%)`,
+              }}
             />
           </div>
         </div>
@@ -209,7 +224,13 @@ function BarraReproduccion({
             min={0}
             max={duracionTotal}
             onChange={handleProgreso}
+            style={{
+              background: `linear-gradient(to right, #0099ff ${
+                (progreso / duracionTotal) * 100
+              }%, #ccc ${(progreso / duracionTotal) * 100}%)`,
+            }}
           />
+
           <span className="barraactual">{formatoDuracion(duracionTotal)}</span>
         </div>
       </div>
