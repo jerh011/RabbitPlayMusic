@@ -1,6 +1,7 @@
 import "./Artistas.css";
 import GetAllArtistas from "../../Services/GetAllArtistas.js";
 import { useEffect, useState } from "react";
+// import URL from "../../Services/URL.js";
 import URL from "../../Services/URL.js";
 import { useNavigate } from "react-router-dom";
 import Carga from "../Cargacanciones/Carga";
@@ -22,7 +23,7 @@ function Artistas() {
       GetArtistas();
     } catch (error) {
       console.error("Error cargando artistas:", error);
-      //pagina de error
+      //pagina de erro
     }
   }, []);
 
