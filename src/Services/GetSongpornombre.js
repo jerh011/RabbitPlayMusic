@@ -1,4 +1,4 @@
-import URL from "./URL";
+import URL from "./URL.js";
 
 const GetSongpornombre = (nombre) => {
   return fetch(`${URL()}/api/canciones?q=${nombre}`)

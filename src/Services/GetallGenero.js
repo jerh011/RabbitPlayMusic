@@ -1,18 +1,16 @@
-import URL from "./URL.js"
+import URL from "./URL.js";
 
-async function  GetallGenero (){
-try{
-    const response=await fetch(URL()+"/api/generos")
-    const data=await response.json();
+async function GetallGenero() {
+  try {
+    const response = await fetch(URL() + "/api/generos");
+    const data = await response.json();
     return data.data;
-}catch(error){
-    console.error(error)
+  } catch (error) {
+    console.error(error);
     return null;
+  }
 }
-    
-}
-export default GetallGenero
-
+export default GetallGenero;
 
 /*
 try {

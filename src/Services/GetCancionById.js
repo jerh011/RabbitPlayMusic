@@ -1,10 +1,8 @@
-import URL from "./URL"
+import URL from "./URL.js";
 
-const GetCancionById= async (id) => {
+const GetCancionById = async (id) => {
   try {
-    const response = await fetch(
-      `${URL()}/api/canciones/${id}`
-    );
+    const response = await fetch(`${URL()}/api/canciones/${id}`);
     const data = await response.json();
     return data.data;
   } catch (error) {
