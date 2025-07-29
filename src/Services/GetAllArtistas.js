@@ -2,10 +2,10 @@ import URL from "./URL.js";
 
 async function GetAllArtistas() {
   try {
-    const response = await fetch(URL() + "/api/artistas");
+    const response = await fetch(URL() + "artistas");
     const data = await response.json();
 
-    return data.data;
+    return data;
   } catch (error) {
     console.error(error);
     return null;

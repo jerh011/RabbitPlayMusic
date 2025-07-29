@@ -51,7 +51,7 @@ function Artistas() {
               onClick={() => selectArtista(id)}
             >
               <img
-                src={`${URL()}/${imagen}`}
+                src={`${URL()}${imagen}`}
                 alt={nombre}
                 className="artista-imagen"
               />

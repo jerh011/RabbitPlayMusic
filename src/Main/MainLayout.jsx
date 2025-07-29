@@ -2,9 +2,10 @@ import { Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./MainPage.css";
 import {
-  AgregarFavoritosEnLocalStorage,
-  ObtenerFavoritosDeLocalStorage,
-} from "../Services/LocalStoragefavoritos.js";
+  AgregarFavoritos,
+  ObtenerFavoritos,
+  EliminarFavoritos,
+} from "../Services/FavoritosServices.js";
 
 import Sidebarheader from "../Layout/Sidebarheader/Sidebarheader";
 import Sidebarconteiner from "../Layout/Sidebarconteiner/Sidebarconteiner";
@@ -16,11 +17,24 @@ function MainLayout() {
   const [cancionElegida, setCancionElegida] = useState(null);
   const [repetir, setRepetir] = useState(false);
   const [sidebarAbierto, setSidebarAbierto] = useState(false);
-  const [Favoritos, setFavoritos] = useState(
-    () => ObtenerFavoritosDeLocalStorage() || []
-  );
+  const [Favoritos, setFavoritos] = useState([]);
+
+  // Cargar favoritos al montar
+  useEffect(() => {
+    const cargarFavoritos = async () => {
+      const favoritos = await ObtenerFavoritos();
+      const normalizados = favoritos.map((fav) => ({
+        ...fav,
+        id: fav.cancionId,
+      }));
+      setFavoritos(normalizados);
+    };
+    cargarFavoritos();
+  }, []);
 
   const cambiarCancion = (direccion) => {
+    if (!Array.isArray(cancionES) || cancionES.length === 0) return;
+
     const index = cancionES.findIndex((c) => c.id === cancionElegida);
     let nuevoIndex = index + direccion;
 
@@ -35,36 +49,40 @@ function MainLayout() {
     setCancionElegida(cancionES[nuevoIndex].id);
   };
 
-  const AgregarCancionFavorita = (cancion) => {
+  const AgregarCancionFavorita = async (cancion) => {
     const yaEsFavorita = Favoritos.some((fav) => fav.id === cancion.id);
 
     if (!yaEsFavorita) {
+      await AgregarFavoritos(cancion.id);
       const nuevosFavoritos = [...Favoritos, cancion];
       setFavoritos(nuevosFavoritos);
-      AgregarFavoritosEnLocalStorage(nuevosFavoritos);
     } else {
+      await EliminarFavoritos(cancion.cancionId);
       const nuevosFavoritos = Favoritos.filter((fav) => fav.id !== cancion.id);
       setFavoritos(nuevosFavoritos);
-      EliminarFavoritosEnLocalStorage(cancion.id); // aquí se usa
     }
   };
 
-  // Si aún no hay canción elegida, toma la primera
+  // Seleccionar primera canción si no hay una activa
   useEffect(() => {
-    if (cancionES.length > 0 && cancionElegida === null) {
+    if (
+      Array.isArray(cancionES) &&
+      cancionES.length > 0 &&
+      cancionElegida === null
+    ) {
       setCancionElegida(cancionES[0].id);
     }
   }, [cancionES]);
 
-  // Verifica si la canción activa aún existe en la nueva lista
+  // Cambiar la activa si la actual ya no existe
   useEffect(() => {
-    if (cancionES.length === 0) return;
+    if (!Array.isArray(cancionES) || cancionES.length === 0) return;
 
     const existe = cancionES.some((c) => c.id === cancionElegida);
     if (!existe) {
       setCancionElegida(cancionES[0].id);
     }
-  }, [cancionES]);
+  }, [cancionES, cancionElegida]);
 
   return (
     <div className="main">

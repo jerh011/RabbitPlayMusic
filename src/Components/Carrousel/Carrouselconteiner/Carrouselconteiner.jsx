@@ -14,7 +14,7 @@ export default function Carrouselconteiner({
       onClick={() => selectAlbum(id)}
     >
       <img
-        src={`${URL()}/${imagen}`}
+        src={`${URL()}${imagen}`}
         alt={titulo}
         className="carrousel-album-cover"
       />

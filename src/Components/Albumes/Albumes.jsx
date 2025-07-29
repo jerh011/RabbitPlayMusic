@@ -42,7 +42,7 @@ export default function Albumes() {
           className="album-card"
           onClick={() => selectAlbum(album.id)}
         >
-          <img src={`${URL()}/${album.portada}`} alt={album.titulo} />
+          <img src={`${URL()}${album.portada}`} alt={album.titulo} />
           <div className="album-info">
             <h3>{album.titulo}</h3>
             <p>

@@ -11,7 +11,7 @@ export default function HeaderInfo({
   onPlay,
 }) {
   const hayImagen = !!imagen;
-  const img = hayImagen ? `${URL()}/${imagen}` : ImagenDefecto;
+  const img = hayImagen ? `${URL()}${imagen}` : ImagenDefecto;
 
   return (
     <div className={`header-info-container ${!hayImagen ? "no-img" : ""}`}>

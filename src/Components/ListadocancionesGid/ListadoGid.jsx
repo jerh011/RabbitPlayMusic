@@ -11,7 +11,9 @@ export default function ListadoGid({
   Favoritos = [],
 }) {
   const Fav = (id) => {
-    return Favoritos.some((cancion) => cancion.id === id);
+    return (
+      Array.isArray(Favoritos) && Favoritos.some((cancion) => cancion.id === id)
+    );
   };
 
   return (
@@ -23,7 +25,7 @@ export default function ListadoGid({
         const duracion = cancion.duracion || "00:00";
         const nombre = cancion.artistaCompleto?.nombre || "Artista desconocido";
         const imagen = cancion.artistaCompleto?.imagen
-          ? `${URL()}/${cancion.artistaCompleto.imagen}`
+          ? `${URL()}${cancion.artistaCompleto.imagen}`
           : Imagen;
 
         return (

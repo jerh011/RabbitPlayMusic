@@ -136,7 +136,7 @@ function BarraReproduccion({
               <img
                 src={
                   cancion?.artista?.imagen
-                    ? `${URL()}/${cancion.artista.imagen}`
+                    ? `${URL()}${cancion.artista.imagen}`
                     : imagen1
                 }
                 alt="Portada álbum o artista"

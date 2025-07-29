@@ -22,8 +22,9 @@ function Album() {
     const cargarAlbum = async () => {
       try {
         const album = await GetAlbumById(Id);
-        setDatos(album.data);
-        setCanciones(album.data.canciones);
+        console.log(album);
+        setDatos(album);
+        setCanciones(album.Canciones);
       } catch (error) {
         console.error("Error cargando álbum:", error);
       } finally {
