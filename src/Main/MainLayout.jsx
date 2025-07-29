@@ -30,7 +30,7 @@ function MainLayout() {
       setFavoritos(normalizados);
     };
     cargarFavoritos();
-  }, []);
+  }, [Favoritos]);
 
   const cambiarCancion = (direccion) => {
     if (!Array.isArray(cancionES) || cancionES.length === 0) return;
@@ -54,12 +54,12 @@ function MainLayout() {
 
     if (!yaEsFavorita) {
       await AgregarFavoritos(cancion.id);
-      const nuevosFavoritos = [...Favoritos, cancion];
-      setFavoritos(nuevosFavoritos);
+      // const nuevosFavoritos = [...Favoritos, cancion];
+      // setFavoritos(nuevosFavoritos);
     } else {
       await EliminarFavoritos(cancion.cancionId);
-      const nuevosFavoritos = Favoritos.filter((fav) => fav.id !== cancion.id);
-      setFavoritos(nuevosFavoritos);
+      // const nuevosFavoritos = Favoritos.filter((fav) => fav.id !== cancion.id);
+      // setFavoritos(nuevosFavoritos);
     }
   };
 
