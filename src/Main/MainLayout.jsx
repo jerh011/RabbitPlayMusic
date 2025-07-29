@@ -57,7 +57,9 @@ function MainLayout() {
       // const nuevosFavoritos = [...Favoritos, cancion];
       // setFavoritos(nuevosFavoritos);
     } else {
-      await EliminarFavoritos(cancion.cancionId);
+      await EliminarFavoritos(
+        cancion.cancionId ? cancion.cancionId : cancion.id
+      );
       // const nuevosFavoritos = Favoritos.filter((fav) => fav.id !== cancion.id);
       // setFavoritos(nuevosFavoritos);
     }
